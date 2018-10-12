@@ -19,6 +19,7 @@
   "dependencies": {
     "ip": "^1.1.5",
     "koa": "^2.5.3",
-    "koa-router": "^7.4.0"
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.3.2"
   }
 }
