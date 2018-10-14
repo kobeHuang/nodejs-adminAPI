@@ -7,8 +7,12 @@ module.exports = (app) => {
         app,
         mounts: [
             {
-                path:Path.join(__dirname, '../controller'),
+                path: Path.join(__dirname, '../controller'),
                 name: 'controller'
+            },
+            {
+                path: Path.join(__dirname, '../service'),
+                name: 'service'
             }
         ]
     })
