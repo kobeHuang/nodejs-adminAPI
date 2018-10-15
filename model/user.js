@@ -6,8 +6,7 @@ const UserSchema = new mongoose.Schema({
     account: String,
     password: String,
     level: Number,
-    nickName: String,
-    token: String
+    nickName: String
 },{
     timestamps: true
 });
