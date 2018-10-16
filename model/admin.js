@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const db = require('./db');
 
-const UserSchema = new mongoose.Schema({
+const AdminSchema = new mongoose.Schema({
     phone: String,
     account: String,
     password: String,
@@ -12,7 +12,7 @@ const UserSchema = new mongoose.Schema({
 });
 
 
-UserSchema.pre('save', (next) => {
+AdminSchema.pre('save', (next) => {
     if(this.isNew) {
         this.createAt = this.updateAt = Date.now();
     }else{
@@ -20,5 +20,7 @@ UserSchema.pre('save', (next) => {
     }
 });
 
+let Admin = db.model('Admin', AdminSchema);
 
-export default mongoose.model('User', UserSchema)
+
+module.exports = Admin

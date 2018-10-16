@@ -23,7 +23,6 @@ const Readdirectory = (path) => {
             content[fname] = Readdirectory(childPath);
         }
     })
-    console.log(JSON.stringify(content));
     return content;
 }
 

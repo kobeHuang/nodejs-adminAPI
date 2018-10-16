@@ -15,7 +15,7 @@ db.once('open', (cb) => {
 });
 
 db.on('error', (cb) => {
-    console.log(error('数据库连接成功'));
+    console.log(error('数据库连接失败'));
 });
 
 

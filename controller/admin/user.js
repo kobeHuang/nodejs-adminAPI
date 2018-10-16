@@ -11,44 +11,37 @@ class User {
         try{
             const { app } = ctx;
             const req = ctx.request.body;
+            
             const { account, password } = req;
 
-            if(!account || !password){
-                ctx.body = {
-                    result: 0,
-                    msg: '提交的信息有误，请重试'
-                }
+            if(account === undefined || password === undefined){
+                ctx.sendError('100');
+                return;
             }
 
-            const user = await app.dbHelper.user.findByAccount({account});
+            const admin = await app.dbHelper.admin.findByAccount({account});
 
-            if(Object.keys(user).length != 0) {
+            if(admin.length != 0) {
+
+                let [user] = admin;
+
                 if(user.password === password){
                     const _user = Object.assign({}, user);
                     delete _user.password;
                     
                     ctx.session.user = user.account;
                     ctx.body = {
-                        result: 1,
+                        code: "0",
                         data: _user
                     }
                 }else{
-                    ctx.body = {
-                        result: 0,
-                        msg: '密码不正确'
-                    }
+                    ctx.sendError('104');
                 }
             }else{
-                ctx.body = {
-                    result: 0,
-                    msg: '用户不存在'
-                }
+                ctx.sendError('103');
             }
         }catch(e) {
-            ctx.body = {
-                result: 0,
-                msg: e.message
-            }
+            ctx.sendError('1');
         }
     }
 }

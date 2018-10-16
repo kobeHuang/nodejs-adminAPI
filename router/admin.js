@@ -8,6 +8,7 @@ module.exports = (app) => {
         prefix: '/admin'
     });
 
+    router.post('/login', app.controller.admin.user.login)
     router.get('/banner', app.controller.admin.content.banners);
 
     
