@@ -2,30 +2,41 @@
  * admin--User
  * 用户数据库操作助手
  */
-const Admin = require('../model/admin');
+const adminModel = require('../model/admin');
 
 let to = require('./to');
 
 
-class Admin_C {
+class Admin {
     /*
      * 根据账号查找用户信息
      * @param   account
      * @return  Object
      */
     static async findByAccount({account}) {
-        let res = null, err, admin;
         
-        [err, admin] = await to(Admin.find({account}));
+        const res = await adminModel.find({account}) || [];
+        
+        return res;
+    }
 
-        if(err){
-            res = [];
+    /*
+     * 增加用户
+     */
+    static async addUser(user) {
+        let res = null, hasUser;
+        hasUser = await Admin.findByAccount({account: user.account}) || [];
+        
+        if(hasUser.length > 0){
+            res = {};
         }else{
-            res = admin;
+            const _user = new adminModel(user);
+            res = await _user.save();  
+             
         }
 
         return res;
     }
 }
 
-module.exports = Admin_C;
+module.exports = Admin;

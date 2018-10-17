@@ -6,7 +6,7 @@
 const mongoose = require('mongoose');
 const chalk = require('chalk');
 
-const db = mongoose.createConnection('mongodb://127.0.0.1/campus');
+const db = mongoose.createConnection('mongodb://127.0.0.1/campus', {useNewUrlParser:true});
 const success = chalk.bold.green;
 const error = chalk.bold.red;
 

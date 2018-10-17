@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const db = require('./db');
 
-const AdminSchema = new mongoose.Schema({
+let AdminSchema = new mongoose.Schema({
     phone: String,
     account: String,
     password: String,
@@ -18,6 +18,8 @@ AdminSchema.pre('save', (next) => {
     }else{
         this.updateAt = Date.now();
     }
+
+    next();
 });
 
 let Admin = db.model('Admin', AdminSchema);

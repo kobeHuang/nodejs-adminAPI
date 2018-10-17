@@ -1,5 +1,3 @@
-
-
 class User {
     /*
      * desc: 登录验证，登录成功将登录状态保存在session
@@ -9,7 +7,7 @@ class User {
      */
     static async login(ctx, next) {
         try{
-            const { app } = ctx;
+            const { app, session } = ctx;
             const req = ctx.request.body;
             
             const { account, password } = req;
@@ -29,7 +27,7 @@ class User {
                     const _user = Object.assign({}, user);
                     delete _user.password;
                     
-                    ctx.session.user = user.account;
+                    
                     ctx.body = {
                         code: "0",
                         data: _user
