@@ -9,7 +9,6 @@ class User {
         try{
             const { app, session } = ctx;
             const req = ctx.request.body;
-            
             const { account, password } = req;
 
             if(account === undefined || password === undefined){
@@ -24,10 +23,13 @@ class User {
                 let [user] = admin;
 
                 if(user.password === password){
-                    const _user = Object.assign({}, user);
+                    let _user = JSON.parse(JSON.stringify(user));
                     delete _user.password;
-                    
-                    
+                    //delete _user._id;             
+
+                    //当值发生改变时才会修改session
+                    Object.assign(session, {..._user, type: 'admin'});
+
                     ctx.body = {
                         code: "0",
                         data: _user
