@@ -1,3 +1,7 @@
+/*
+ * 后台管理员文档结构
+ */
+
 const mongoose = require('mongoose');
 const db = require('./db');
 
