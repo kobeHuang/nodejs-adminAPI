@@ -7,7 +7,7 @@ const db = require('./db');
 
 let BannerSchema = new mongoose.Schema({
     title: String,
-    src: String,
+    url: String,
     pos: String,
     isShow: Boolean
 },{

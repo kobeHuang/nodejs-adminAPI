@@ -8,8 +8,8 @@ class User {
     static async login(ctx, next) {
         try{
             const { app, session } = ctx;
-            const req = ctx.request.body;
-            const { account, password } = req;
+            const params = ctx.request.body;
+            const { account, password } = params;
 
             if(account === undefined || password === undefined){
                 ctx.sendError('100');

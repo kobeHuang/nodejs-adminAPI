@@ -17,8 +17,9 @@ module.exports = (app) => {
     // });
 
     router.post('/login', app.controller.admin.user.login)
-    router.get('/banner', app.controller.admin.content.banners);
-
+    router.get('/bannerPos', app.controller.admin.content.bannerPos)
+    router.get('/banners', app.controller.admin.content.banners);
+    router.post('/banners/save', app.controller.admin.content.banners);
     
     return router;
 }
