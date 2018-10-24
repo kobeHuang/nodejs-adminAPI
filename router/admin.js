@@ -16,10 +16,12 @@ module.exports = (app) => {
     //     "nickName" : "tresor"
     // });
 
-    router.post('/login', app.controller.admin.user.login)
-    router.get('/bannerPos', app.controller.admin.content.bannerPos)
-    router.get('/banners', app.controller.admin.content.banners);
-    router.post('/banners/save', app.controller.admin.content.banners);
+    router.post('/login', app.controller.admin.user.login);
+
+    router.get('/bannerPos', app.controller.admin.banner.pos);
+    router.get('/banner', app.controller.admin.banner.list);
+    router.post('/banner/save', app.controller.admin.banner.save);
+    router.post('/banner/del', app.controller.admin.banner.del);
     
     return router;
 }

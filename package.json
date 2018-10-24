@@ -25,6 +25,7 @@
   "devDependencies": {
     "bluebird": "^3.5.2",
     "chalk": "^2.4.1",
+    "koa-body": "^4.0.4",
     "koa-bodyparser": "^4.2.1",
     "koa-json": "^2.0.2",
     "koa-session": "^5.9.0",
