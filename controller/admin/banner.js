@@ -48,12 +48,12 @@ class Content {
     static async save(ctx, next) {
         try{
             const { app } = ctx;
-            const { id, title, url, pos, isShow } = ctx.request.body;
+            const { _id, title, url, pos, isShow } = ctx.request.body;
 
             if([title, url, pos, isShow].indexOf(undefined) != -1){
                 ctx.sendError('107');
             }else{
-                const result = await app.dbHelper.banner.insertBanner({ id, title, url, pos, isShow });
+                const result = await app.dbHelper.banner.insertBanner({ _id, title, url, pos, isShow });
                 if(result.ok) {
                     ctx.body = {
                         code: "0"
@@ -81,7 +81,7 @@ class Content {
             if(!ids){
                 ctx.sendError('100');
             }else{
-                const result = await app.dbHelper.delBanner({ids});
+                const result = await app.dbHelper.banner.delBanner({ids});
                 if(result.ok) {
                     ctx.body = {
                         code: "0"

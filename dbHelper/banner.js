@@ -25,13 +25,9 @@ class Banner {
         return bannerPos;
     }
 
-    static async insertBanner(doc){
-        const result = null;
-        if(doc._id){
-            result = await bannerModel.create(doc);
-        }else{
-            result = await bannerModel.update({_id: ObjectId(doc._id)}, {$set: doc});
-        }
+    static async insertBanner({ _id, title, url, pos, isShow }){
+ 
+        const result = await bannerModel.updateOne({_id: ObjectId(_id)}, {$set: {title, url, pos, isShow}}, {upsert: true});
 
         return result;
     }
@@ -40,10 +36,12 @@ class Banner {
         let idArr = ids.split(','),
             objIds = [];
         idArr.forEach(id => {
-            objIds = ObjectId(id);
+            objIds.push(ObjectId(id));
         });
-        const result = bannerModel.remove({_id: {$in: objIds}});
-        
-        return { ok } = result;
+        console.log(objIds);
+        const result = await bannerModel.deleteMany({_id: {$in: objIds}});
+        return result;
     }
 }
+
+module.exports = Banner;
