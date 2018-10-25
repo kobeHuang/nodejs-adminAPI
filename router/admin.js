@@ -16,12 +16,18 @@ module.exports = (app) => {
     //     "nickName" : "tresor"
     // });
 
+    //登录
     router.post('/login', app.controller.admin.user.login);
 
+
+    //banner图管理
     router.get('/bannerPos', app.controller.admin.banner.pos);
     router.get('/banner', app.controller.admin.banner.list);
     router.post('/banner/save', app.controller.admin.banner.save);
     router.post('/banner/del', app.controller.admin.banner.del);
+
+
+    //资讯管理
     
     return router;
 }
