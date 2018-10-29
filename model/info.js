@@ -7,12 +7,25 @@ let InfoSchema = new mongoose.Schema({
     img: String,
     content: String,
     order: Number,
-    views: Number,
-    comments: Number,
+    views: {
+        type: Number,
+        default: 0
+    },
+    comments: {
+        type: Number,
+        default: 0
+    },
     isComment: Boolean
 },{
     timestamps: true
 });
+
+/*
+ * 自增长阅读量
+ */
+InfoSchema.static.findByView = function(id){
+
+}
 
 InfoSchema.pre('save', (next) => {
     if(next.isNew){

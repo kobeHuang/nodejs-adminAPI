@@ -15,6 +15,8 @@ ClassifySchema.pre('save', (next) => {
     }else{
         this.updateAt = new Date();
     }
+
+    next();
 });
 
 let InfoClassify = db.model('InfoClassify', ClassifySchema);

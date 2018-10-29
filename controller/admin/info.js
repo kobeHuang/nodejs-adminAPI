@@ -26,7 +26,7 @@ class Info {
             if([name, status].indexOf(undefined) != -1){
                 ctx.sendError('107');
             }else{
-                const result = await app.dbHelper.banner.insertBanner({ _id, name, icon, status });
+                const result = await app.dbHelper.info.insertClassify({ _id, name, icon, status });
                 if(result.ok) {
                     ctx.body = {
                         code: "0"
@@ -64,12 +64,12 @@ class Info {
     static async save(ctx, next){
         try{
             const { app } = ctx;
-            const { _id, title, classify, img, content, order } = ctx.request.body;
+            const { _id, title, classify, img, content, order, isComment } = ctx.request.body;
 
             if([title, classify, img, content, order].indexOf(undefined) != -1){
                 ctx.sendError('107');
             }else{
-                const result = await app.dbHelper.info.insertInfo({ _id, title, classify, img, content, order });
+                const result = await app.dbHelper.info.insertInfo({ _id, title, classify, img, content, order, isComment });
                 if(result.ok) {
                     ctx.body = {
                         code: "0"

@@ -1,5 +1,5 @@
 /*
- * admin--banner
+ * banner
  * banner图数据库操作助手
  */
 
@@ -8,21 +8,20 @@ const bannerModel = require('../model/banner');
 const bannerPosModel = require('../model/banner_pos');
 
 class Banner {
-    static async findBanners({pos}) {
-        let banners = [];
-        if(pos === undefined){
-            banners = await bannerModel.find() || [];
-        }else{
-            banners = await bannerModel.find({pos}) || [];
-        }
-
-        return banners;
+    static async findBannerPos() {
+        const result = await bannerPosModel.find() || [];
+        return result;
     }
 
+    static async findBanners({pos}) {
+        let result = [];
+        if(pos === undefined){
+            result = await bannerModel.find() || [];
+        }else{
+            result = await bannerModel.find({pos}) || [];
+        }
 
-    static async findBannerPos() {
-        const bannerPos = await bannerPosModel.find() || [];
-        return bannerPos;
+        return result;
     }
 
     static async insertBanner({ _id, title, url, pos, isShow }){
@@ -38,7 +37,6 @@ class Banner {
         idArr.forEach(id => {
             objIds.push(ObjectId(id));
         });
-        console.log(objIds);
         const result = await bannerModel.deleteMany({_id: {$in: objIds}});
         return result;
     }

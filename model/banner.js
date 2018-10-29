@@ -20,6 +20,8 @@ BannerSchema.pre('save', (next) => {
     }else{
         this.updateAt = new Date();
     }
+
+    next();
 });
 
 let Banner = db.model('Banner', BannerSchema);
