@@ -45,16 +45,29 @@ class Info {
      * 资讯
      */
 
+    /*
+     * list
+     * @params  {classify: string, keywords: string, pageNo: number, pageSize: number }
+     */ 
     static async list(ctx, next){
         try{
             const { app } = ctx;
-            const { classify } = ctx.request.body;
+            const { 
+                classify,
+                keywords = '',
+                pageNo = 1,
+                pageSize = 10
+            } = ctx.request.body;
 
-            const data = await app.dbHelper.info.findInfo({ classify });
+            const data = await app.dbHelper.info.findInfo({ classify, keywords, pageNo, pageSize });
 
             ctx.body = {
                 code: "0",
-                data
+                data: {
+                    items: data,
+                    pageNo,
+                    pageSize
+                }
             }
         }catch(e){
             ctx.sendError('1');

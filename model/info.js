@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ObjectId = require('mongodb').ObjectId ;
 const db = require('./db');
 
 let InfoSchema = new mongoose.Schema({
@@ -23,8 +24,11 @@ let InfoSchema = new mongoose.Schema({
 /*
  * 自增长阅读量
  */
-InfoSchema.static.findByView = function(id){
-
+InfoSchema.static.findByView = async function(id){
+    const result = await this.findById({_id: ObjectId(id)});
+    await this.updateOne({_id, ObjectId(id)}, {$set: {views: result.views + 1}});
+    
+    return result;
 }
 
 InfoSchema.pre('save', (next) => {
