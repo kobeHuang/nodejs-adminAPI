@@ -27,3 +27,5 @@ class Content{
         return result;
     }
 }
+
+module.exports = Content;
