@@ -14,6 +14,10 @@ class Info{
     }
 
     static async insertClassify({ _id, name, icon, status }){
+        if(icon.indexOf('temp/') != -1){
+            icon = icon.replace('temp/', 'upload/');
+        }
+
         const result = await bannerModel.updateOne({_id: ObjectId(_id)}, {$set: {name, icon, status}}, {upsert: true});
 
         return result;
@@ -39,6 +43,10 @@ class Info{
     }
 
     static async insertInfo({ _id, title, classify, img, content, order, isComment }){
+        if(img.indexOf('temp/') != -1){
+            img = img.replace('temp/', 'upload/');
+        }
+
         const result = await infoModel.updateOne({_id: ObjectId(_id)}, {$set: {title, classify, img, content, order, isComment}}, {upsert: true});
 
         return result;

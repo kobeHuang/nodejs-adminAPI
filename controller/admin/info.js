@@ -1,3 +1,5 @@
+const rename = require('../rename');
+
 class Info {
     /*
      * 资讯分类
@@ -28,6 +30,7 @@ class Info {
             }else{
                 const result = await app.dbHelper.info.insertClassify({ _id, name, icon, status });
                 if(result.ok) {
+                    rename(icon);
                     ctx.body = {
                         code: "0"
                     }
@@ -57,7 +60,7 @@ class Info {
                 keywords = '',
                 pageNo = 1,
                 pageSize = 10
-            } = ctx.request.body;
+            } = ctx.request.query;
 
             const data = await app.dbHelper.info.findInfo({ classify, keywords, pageNo, pageSize });
 
@@ -84,6 +87,8 @@ class Info {
             }else{
                 const result = await app.dbHelper.info.insertInfo({ _id, title, classify, img, content, order, isComment });
                 if(result.ok) {
+                    rename(img);
+
                     ctx.body = {
                         code: "0"
                     }

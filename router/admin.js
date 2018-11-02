@@ -36,6 +36,14 @@ module.exports = (app) => {
 
 
     //校园生活
+    router.get('/life', app.controller.admin.life.list);
+    router.post('/life/save', app.controller.admin.info.save);
+    router.post('/life/del', app.controller.admin.life.del)
+
+
+    //内容管理
+    router.get('/content', app.controller.admin.content.list);
+    router.post('/content/save', app.controller.admin.content.save);
     
     return router;
 }

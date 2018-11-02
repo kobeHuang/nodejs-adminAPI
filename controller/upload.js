@@ -42,7 +42,7 @@ module.exports = async(ctx, next) => {
                 // 创建可读流
                 const reader = fs.createReadStream(file.path);
                 // 获取上传文件扩展名
-                let filePath = path.join(__dirname, 'public/upload/') + `/${fliename}`;
+                let filePath = path.join(__dirname, 'public/temp/') + `/${fliename}`;
                 // 创建可写流
                 const upStream = fs.createWriteStream(filePath);
 
