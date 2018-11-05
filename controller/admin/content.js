@@ -49,3 +49,6 @@ class Content {
         }
     }
 }
+
+
+module.exports = Content;

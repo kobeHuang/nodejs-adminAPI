@@ -8,6 +8,12 @@ module.exports = (app) => {
         prefix: '/admin'
     });
 
+    router.use(async(ctx,next)=> {
+        
+        
+        await next();
+    });
+
     // app.dbHelper.admin.addUser({
     //     "phone" : "13800138000", 
     //     "account" : "admin", 

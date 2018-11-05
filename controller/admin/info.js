@@ -124,4 +124,4 @@ class Info {
     }
 }
 
-module.exports = info;
+module.exports = Info;
