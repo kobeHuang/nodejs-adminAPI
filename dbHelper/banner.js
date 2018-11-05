@@ -13,19 +13,33 @@ class Banner {
         return result;
     }
 
-    static async findBanners({pos}) {
+    static async findBanners({ pos, keywords, pageNo, pageSize, isShow }) {
         let result = [];
-        if(pos === undefined){
-            result = await bannerModel.find() || [];
+        const start = (pageNo - 1) * pageSize;
+        if(pos === undefined && !keywords && isShow === undefined){
+            result = await bannerModel.find().limit(pageSize).skip(start).sort({order: -1}) || [];
         }else{
-            result = await bannerModel.find({pos}) || [];
+            let query = {};
+            pos !== undefined && (
+                query.pos = pos
+            )
+            keywords && (
+                query.title = { $regex: keywords }
+            )
+            isShow !== undefined && (
+                query.isShow = isShow
+            )
+            result = await bannerModel.find({ query }).limit(pageSize).skip(start).sort({order: -1}) || [];
         }
 
         return result;
     }
 
     static async insertBanner({ _id, title, url, pos, isShow }){
- 
+        if(url.indexOf('temp/') != -1){
+            url = url.replace('temp/', 'upload/');
+        }
+        
         const result = await bannerModel.updateOne({_id: ObjectId(_id)}, {$set: {title, url, pos, isShow}}, {upsert: true});
 
         return result;

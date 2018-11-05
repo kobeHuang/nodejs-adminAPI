@@ -1,9 +1,9 @@
 /*
  * info
- * info图数据库操作助手
+ * info数据库操作助手
  */
 
-const ObjectId = require('mongodb').ObjectId ;
+const ObjectId = require('mongodb').ObjectId;
 const infoModel = require('../model/banner');
 const infoClassifyModel = require('../model/banner_pos');
 
@@ -14,23 +14,39 @@ class Info{
     }
 
     static async insertClassify({ _id, name, icon, status }){
+        if(icon.indexOf('temp/') != -1){
+            icon = icon.replace('temp/', 'upload/');
+        }
+
         const result = await bannerModel.updateOne({_id: ObjectId(_id)}, {$set: {name, icon, status}}, {upsert: true});
 
         return result;
     }
 
-    static async findInfo({ classify }){
+    static async findInfo({ classify, keywords, pageNo, pageSize }){
         let result = [];
-        if(classify === undefined){
-            result = await infoModel.find() || [];
+        const start = (pageNo - 1) * pageSize;
+        if(classify === undefined && !keywords){
+            result = await infoModel.find().limit(pageSize).skip(start).sort({order: -1}) || [];
         }else{
-            result = await infoModel.find({classify}) || [];
+            let query = {};
+            classify !== undefined && (
+                query.classify = classify
+            )
+            keywords && (
+                query.title = { $regex: keywords }
+            )
+            result = await infoModel.find({ query }).limit(pageSize).skip(start).sort({order: -1}) || [];
         }
 
         return result;
     }
 
     static async insertInfo({ _id, title, classify, img, content, order, isComment }){
+        if(img.indexOf('temp/') != -1){
+            img = img.replace('temp/', 'upload/');
+        }
+
         const result = await infoModel.updateOne({_id: ObjectId(_id)}, {$set: {title, classify, img, content, order, isComment}}, {upsert: true});
 
         return result;

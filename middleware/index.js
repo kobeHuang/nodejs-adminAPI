@@ -7,6 +7,7 @@ const koaBody = require('koa-body');
 const mount = require('./mi-mount');
 const api_error = require('./mi-api-error');
 const session = require('./mi-session');
+const validate = require('./mi-validate');
 
 module.exports = (app) => {
 
@@ -23,6 +24,7 @@ module.exports = (app) => {
     }))
 
     app.use(api_error());
+    app.use(validate());
 
     mount({
         app,

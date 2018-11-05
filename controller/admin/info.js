@@ -1,3 +1,5 @@
+const rename = require('../rename');
+
 class Info {
     /*
      * 资讯分类
@@ -28,6 +30,7 @@ class Info {
             }else{
                 const result = await app.dbHelper.info.insertClassify({ _id, name, icon, status });
                 if(result.ok) {
+                    rename(icon);
                     ctx.body = {
                         code: "0"
                     }
@@ -45,16 +48,29 @@ class Info {
      * 资讯
      */
 
+    /*
+     * list
+     * @params  {classify: string, keywords: string, pageNo: number, pageSize: number }
+     */ 
     static async list(ctx, next){
         try{
             const { app } = ctx;
-            const { classify } = ctx.request.body;
+            const { 
+                classify,
+                keywords = '',
+                pageNo = 1,
+                pageSize = 10
+            } = ctx.request.query;
 
-            const data = await app.dbHelper.info.findInfo({ classify });
+            const data = await app.dbHelper.info.findInfo({ classify, keywords, pageNo, pageSize });
 
             ctx.body = {
                 code: "0",
-                data
+                data: {
+                    items: data,
+                    pageNo,
+                    pageSize
+                }
             }
         }catch(e){
             ctx.sendError('1');
@@ -71,6 +87,8 @@ class Info {
             }else{
                 const result = await app.dbHelper.info.insertInfo({ _id, title, classify, img, content, order, isComment });
                 if(result.ok) {
+                    rename(img);
+
                     ctx.body = {
                         code: "0"
                     }
@@ -106,4 +124,4 @@ class Info {
     }
 }
 
-module.exports = info;
+module.exports = Info;

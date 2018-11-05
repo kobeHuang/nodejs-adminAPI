@@ -1,3 +1,5 @@
+const rename = require('../rename');
+
 class Content {
     /*
      * 获取所有banner可选位置
@@ -20,20 +22,28 @@ class Content {
     }
 
     /*
-     * 获取所有banner
-     * @params {pos: no reqiure}
-     * return {data}
+     * list
+     * @params  {pos: string, keywords: string, pageNo: number, pageSize: number }
      */
     static async list(ctx, next) {
         try{
             const { app } = ctx;
-            const { pos } = ctx.request.query;
+            const { 
+                pos,
+                keywords = '',
+                pageNo = 1,
+                pageSize = 10 
+            } = ctx.request.query;
 
-            const data = await app.dbHelper.banner.findBanners({pos});
+            const data = await app.dbHelper.banner.findBanners({ pos, keywords, pageNo, pageSize });
 
             ctx.body = {
                 code: "0",
-                data
+                data: {
+                    items: data,
+                    pageNo,
+                    pageSize
+                }
             }
         }catch(e) {
             ctx.sendError('1');
@@ -55,6 +65,8 @@ class Content {
             }else{
                 const result = await app.dbHelper.banner.insertBanner({ _id, title, url, pos, isShow });
                 if(result.ok) {
+                    rename(url);
+                    
                     ctx.body = {
                         code: "0"
                     }

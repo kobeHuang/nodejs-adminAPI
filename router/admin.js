@@ -28,6 +28,22 @@ module.exports = (app) => {
 
 
     //资讯管理
+    router.get('/infoClassify', app.controller.admin.info.classify_list);
+    router.post('/infoClassify/save', app.controller.admin.info.classify_save);
+    router.get('/info', app.controller.admin.info.list);
+    router.post('/info/save', app.controller.admin.info.save);
+    router.post('/info/del', app.controller.admin.info.del);
+
+
+    //校园生活
+    router.get('/life', app.controller.admin.life.list);
+    router.post('/life/save', app.controller.admin.info.save);
+    router.post('/life/del', app.controller.admin.life.del)
+
+
+    //内容管理
+    router.get('/content', app.controller.admin.content.list);
+    router.post('/content/save', app.controller.admin.content.save);
     
     return router;
 }
