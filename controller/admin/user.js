@@ -32,7 +32,12 @@ class User {
 
                     ctx.body = {
                         code: "0",
-                        data: _user
+                        data: {
+                            account: _user.account,
+                            level: _user.level,
+                            nickName: _user.nickName,
+                            phone: _user.phone
+                        }
                     }
                 }else{
                     ctx.sendError('104');
