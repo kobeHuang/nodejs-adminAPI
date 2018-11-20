@@ -15,12 +15,14 @@ class Banner {
 
     static async findBanners({ pos, keywords, pageNo, pageSize, isShow }) {
         let result = [];
+        let total;
         const start = (pageNo - 1) * pageSize;
-        if(pos === undefined && !keywords && isShow === undefined){
+        if(pos && !keywords && isShow === undefined){
+            total = await bannerModel.find().count();
             result = await bannerModel.find().limit(pageSize).skip(start).sort({order: -1}) || [];
         }else{
             let query = {};
-            pos !== undefined && (
+            pos && (
                 query.pos = pos
             )
             keywords && (
@@ -29,10 +31,14 @@ class Banner {
             isShow !== undefined && (
                 query.isShow = isShow
             )
-            result = await bannerModel.find({ query }).limit(pageSize).skip(start).sort({order: -1}) || [];
+            total = await bannerModel.find(query).count();
+            result = await bannerModel.find(query).limit(pageSize).skip(start).sort({order: -1}) || [];
         }
 
-        return result;
+        return {
+            total,
+            result
+        };
     }
 
     static async insertBanner({ _id, title, url, pos, isShow }){

@@ -27,15 +27,16 @@ function saveFile(reader, upStream){
 
 module.exports = async(ctx, next) => {
     try{
-        const files = ctx.requset.files.file,
-              type = ctx.requset.body.type;
+        const files = ctx.requset.files.file;
+              //type = ctx.requset.body.type;
         let isAllow = true,
             uploads = [];
-        if(type === undefined){
+        /*if(type === undefined){
             ctx.sendError('100');
             return;
-        }
-        for(let file of files){
+        }*/
+        console.log(files);
+        /*for(let file of files){
             const fliename = file.name;
             const extname = Path.extname(fliename);
             if(checkFileType(type,extname)){
@@ -53,15 +54,11 @@ module.exports = async(ctx, next) => {
                 isAllow = false;
                 break;
             }
-        }
+        }*/
 
-        if(isAllow){
-            ctx.body = {
-                code: "0",
-                data: uploads.join(',')
-            }
-        }else{
-            ctx.sendError('106');
+        ctx.body = {
+            code: "0",
+            data: JSON.stringify(files)
         }
     }catch(e) {
         ctx.sendError('1');

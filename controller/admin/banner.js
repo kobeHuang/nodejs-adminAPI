@@ -35,12 +35,14 @@ class Content {
                 pageSize = 10 
             } = ctx.request.query;
 
-            const data = await app.dbHelper.banner.findBanners({ pos, keywords, pageNo, pageSize });
+
+            const data = await app.dbHelper.banner.findBanners({ pos, keywords, pageNo: parseInt(pageNo), pageSize: parseInt(pageSize) });
 
             ctx.body = {
                 code: "0",
                 data: {
-                    items: data,
+                    items: data.result,
+                    count: data.total,
                     pageNo,
                     pageSize
                 }
