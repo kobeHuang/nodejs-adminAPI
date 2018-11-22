@@ -68,7 +68,6 @@ class Content {
                 const result = await app.dbHelper.banner.insertBanner({ _id, title, url, pos, isShow });
                 if(result.ok) {
                     rename(url);
-                    
                     ctx.body = {
                         code: "0"
                     }

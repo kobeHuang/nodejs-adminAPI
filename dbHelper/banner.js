@@ -45,9 +45,11 @@ class Banner {
         if(url.indexOf('temp/') != -1){
             url = url.replace('temp/', 'upload/');
         }
+
+       
         
         const result = await bannerModel.updateOne({_id: ObjectId(_id)}, {$set: {title, url, pos, isShow}}, {upsert: true});
-
+        
         return result;
     }
 
