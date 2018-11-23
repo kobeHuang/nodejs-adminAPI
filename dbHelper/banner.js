@@ -45,7 +45,7 @@ class Banner {
         let result = '';
 
         if(url.indexOf('temp/') != -1){
-            url = url.replace('temp/', 'upload/');
+            url = url.replace('tmp/', 'upload/');
         }
 
        if(_id){
