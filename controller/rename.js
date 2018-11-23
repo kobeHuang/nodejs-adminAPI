@@ -12,7 +12,6 @@ module.exports = function(str) {
         if(url.indexOf('temp/') == -1) return;
         
         const basename = Path.basename(url);
-        console.log(basename);
         const fromPath = Path.join(__dirname, `../public/temp/${basename}`);
         const toPath = Path.join(__dirname, `../public/upload/${basename}`);
 
@@ -20,7 +19,6 @@ module.exports = function(str) {
             if (err) throw err;
             fs.stat(toPath, function (err, stats) {
                 if (err) throw err;
-                console.log('stats: ' + JSON.stringify(stats));
             })
         })
     });

@@ -95,7 +95,7 @@ class Content {
                 ctx.sendError('100');
             }else{
                 const result = await app.dbHelper.banner.delBanner({ids});
-                if(result.ok) {
+                if(result.length > 0) {
                     ctx.body = {
                         code: "0"
                     }

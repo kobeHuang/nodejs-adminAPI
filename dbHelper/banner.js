@@ -42,14 +42,20 @@ class Banner {
     }
 
     static async insertBanner({ _id, title, url, pos, isShow }){
+        let result = '';
+
         if(url.indexOf('temp/') != -1){
             url = url.replace('temp/', 'upload/');
         }
 
-       
-        
-        const result = await bannerModel.updateOne({_id: ObjectId(_id)}, {$set: {title, url, pos, isShow}}, {upsert: true});
-        
+       if(_id){
+            result = await bannerModel.updateOne({_id: ObjectId(_id)}, {$set: {title, url, pos, isShow}}, {upsert: true});
+       }else{
+            result = await bannerModel.insertMany([{title, url, pos, isShow}]);      
+       }
+
+       console.log(result);
+
         return result;
     }
 
