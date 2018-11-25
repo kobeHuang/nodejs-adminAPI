@@ -44,7 +44,7 @@ class Banner {
     static async insertBanner({ _id, title, url, pos, isShow }){
         let result = '';
 
-        if(url.indexOf('temp/') != -1){
+        if(url.indexOf('tmp/') != -1){
             url = url.replace('tmp/', 'upload/');
         }
 

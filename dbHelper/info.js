@@ -4,8 +4,8 @@
  */
 
 const ObjectId = require('mongodb').ObjectId;
-const infoModel = require('../model/banner');
-const infoClassifyModel = require('../model/banner_pos');
+const infoModel = require('../model/info');
+const infoClassifyModel = require('../model/info_classify');
 
 class Info{
     static async findInfoClassify(){
@@ -14,11 +14,17 @@ class Info{
     }
 
     static async insertClassify({ _id, name, icon, status }){
-        if(icon.indexOf('temp/') != -1){
-            icon = icon.replace('temp/', 'upload/');
+        let result = '';
+
+        if(url.indexOf('tmp/') != -1){
+            url = url.replace('tmp/', 'upload/');
         }
 
-        const result = await bannerModel.updateOne({_id: ObjectId(_id)}, {$set: {name, icon, status}}, {upsert: true});
+        if(_id){
+            result = await infoClassifyModel.updateOne({_id: ObjectId(_id)}, {$set: {name, icon, status}}, {upsert: true});
+        }else{
+            result = await infoClassifyModel.insertMany([{name, icon, status}]);      
+        }
 
         return result;
     }
@@ -65,3 +71,4 @@ class Info{
 
 }
 
+module.exports = Info;

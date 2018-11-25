@@ -26,7 +26,7 @@ let InfoSchema = new mongoose.Schema({
  */
 InfoSchema.static.findByView = async function(id){
     const result = await this.findById({_id: ObjectId(id)});
-    await this.updateOne({_id, ObjectId(id)}, {$set: {views: result.views + 1}});
+    await this.updateOne({_id: ObjectId(id)}, {$set: {views: result.views + 1}});
     
     return result;
 }
