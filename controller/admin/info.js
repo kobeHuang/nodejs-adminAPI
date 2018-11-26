@@ -12,7 +12,9 @@ class Info {
 
             ctx.body = {
                 code: "0",
-                data
+                data: {
+                    items: data
+                }
             }
 
         }catch(e){
@@ -29,7 +31,8 @@ class Info {
                 ctx.sendError('107');
             }else{
                 const result = await app.dbHelper.info.insertClassify({ _id, name, icon, status });
-                if(result.ok) {
+
+                if(result.ok || (result.length && result.length > 0)) {
                     rename(icon);
                     ctx.body = {
                         code: "0"
@@ -39,6 +42,28 @@ class Info {
                 }
             }
 
+        }catch(e){
+            ctx.sendError('1');
+        }
+    }
+
+    static async classify_del(ctx, next){
+        try{
+            const { app } = ctx;
+            const { name } = ctx.request.body;
+
+            if(!name){
+                ctx.sendError('100');
+            }else{
+                const result = await app.dbHelper.info.delClassify({name});
+                if(result.ok) {
+                    ctx.body = {
+                        code: "0"
+                    }
+                }else{
+                    ctx.sendError('803');
+                }
+            }
         }catch(e){
             ctx.sendError('1');
         }

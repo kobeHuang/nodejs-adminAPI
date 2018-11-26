@@ -16,8 +16,8 @@ class Info{
     static async insertClassify({ _id, name, icon, status }){
         let result = '';
 
-        if(url.indexOf('tmp/') != -1){
-            url = url.replace('tmp/', 'upload/');
+        if(icon.indexOf('tmp/') != -1){
+            icon = icon.replace('tmp/', 'upload/');
         }
 
         if(_id){
@@ -27,6 +27,21 @@ class Info{
         }
 
         return result;
+    }
+
+    static async delClassify({name}){
+        
+        const dcRes = await infoClassifyModel.deleteMany({name});
+        console.log(dcRes);
+        if(dcRes.ok){
+            const diRes = await infoModel.deleteMany({classify: name});
+            console.log(diRes);
+            return diRes;
+        }else{
+            return {
+                ok: false
+            }
+        }
     }
 
     static async findInfo({ classify, keywords, pageNo, pageSize }){
@@ -49,8 +64,8 @@ class Info{
     }
 
     static async insertInfo({ _id, title, classify, img, content, order, isComment }){
-        if(img.indexOf('temp/') != -1){
-            img = img.replace('temp/', 'upload/');
+        if(img.indexOf('tmp/') != -1){
+            img = img.replace('tmp/', 'upload/');
         }
 
         const result = await infoModel.updateOne({_id: ObjectId(_id)}, {$set: {title, classify, img, content, order, isComment}}, {upsert: true});

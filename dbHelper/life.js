@@ -21,7 +21,7 @@ class Life{
 
 
     static async insertLife({ _id, title, images, intro, order }) {
-        images = images.replace(/\/temp\//g, '/upload/');
+        images = images.replace(/\/tmp\//g, '/upload/');
 
         const result = await lifeModel.updateOne({_id: ObjectId(_id)}, {$set: {title, images, intro, order}}, {upsert: true});
 

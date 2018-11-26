@@ -18,8 +18,8 @@ class Content{
     }
 
     static async insertContent({ _id, title, content, icon, author }){
-        if(icon.indexOf('temp/') != -1){
-            icon = icon.replace('temp/', 'upload/');
+        if(icon.indexOf('tmp/') != -1){
+            icon = icon.replace('tmp/', 'upload/');
         }
 
         const result = await contentModel.updateOne({_id: ObjectId(_id)}, {$set: {title, content, icon, author}}, {upsert: true});

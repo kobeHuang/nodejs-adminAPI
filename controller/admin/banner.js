@@ -66,7 +66,7 @@ class Content {
                 ctx.sendError('107');
             }else{
                 const result = await app.dbHelper.banner.insertBanner({ _id, title, url, pos, isShow });
-                if(result.ok) {
+                if(result.ok || (result.length && result.length > 0)) {
                     rename(url);
                     ctx.body = {
                         code: "0"
@@ -95,7 +95,7 @@ class Content {
                 ctx.sendError('100');
             }else{
                 const result = await app.dbHelper.banner.delBanner({ids});
-                if(result.length > 0) {
+                if(result.ok) {
                     ctx.body = {
                         code: "0"
                     }

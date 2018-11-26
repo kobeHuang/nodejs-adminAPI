@@ -27,12 +27,12 @@ module.exports = (app) => {
     app.use(koaBody({
         multipart: true,
         formidable: {
-            uploadDir:Path.join(__dirname,'../public/temp/'),
+            uploadDir:Path.join(__dirname,'../public/tmp/'),
             keepExtensions: true,
             maxFileSize: 2*1024*1024,    // 设置上传文件大小最大限制，默认2M
             onFileBegin:(name,file) => {
                 const extname = Path.extname(file.name);
-                const dir = Path.join(__dirname,'../public/temp/');
+                const dir = Path.join(__dirname,'../public/tmp/');
                 // 重新覆盖 file.path 属性
                 file.path = `${dir}/${new Date().getTime()}${extname}`;
             }
