@@ -87,12 +87,13 @@ class Info {
                 pageSize = 10
             } = ctx.request.query;
 
-            const data = await app.dbHelper.info.findInfo({ classify, keywords, pageNo, pageSize });
+            const data = await app.dbHelper.info.findInfo({ classify, keywords, pageNo: parseInt(pageNo), pageSize: parseInt(pageSize) });
 
             ctx.body = {
                 code: "0",
                 data: {
-                    items: data,
+                    items: data.result,
+                    count: data.total,
                     pageNo,
                     pageSize
                 }
@@ -111,7 +112,7 @@ class Info {
                 ctx.sendError('107');
             }else{
                 const result = await app.dbHelper.info.insertInfo({ _id, title, classify, img, content, order, isComment });
-                if(result.ok) {
+                if(result.ok || (result.length && result.length > 0)) {
                     rename(img);
 
                     ctx.body = {

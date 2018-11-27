@@ -44,10 +44,12 @@ class Info{
         }
     }
 
-    static async findInfo({ classify, keywords, pageNo, pageSize }){
+    static async findInfo({ classify, keywords, pageNo, pageSize, status }){
         let result = [];
+        let total;
         const start = (pageNo - 1) * pageSize;
-        if(classify === undefined && !keywords){
+        if(!classify && !keywords && status === undefined){
+            total = await infoModel.find().count();
             result = await infoModel.find().limit(pageSize).skip(start).sort({order: -1}) || [];
         }else{
             let query = {};
@@ -57,18 +59,30 @@ class Info{
             keywords && (
                 query.title = { $regex: keywords }
             )
+            status !== undefined && (
+                query.status = status
+            )
+            total = await infoModel.find({ query }).count();
             result = await infoModel.find({ query }).limit(pageSize).skip(start).sort({order: -1}) || [];
         }
 
-        return result;
+        return {
+            total,
+            result
+        };
     }
 
     static async insertInfo({ _id, title, classify, img, content, order, isComment }){
+        let result = null;
         if(img.indexOf('tmp/') != -1){
             img = img.replace('tmp/', 'upload/');
         }
 
-        const result = await infoModel.updateOne({_id: ObjectId(_id)}, {$set: {title, classify, img, content, order, isComment}}, {upsert: true});
+        if(_id){
+            result = await infoModel.updateOne({_id: ObjectId(_id)}, {$set: {title, classify, img, content, order, isComment}}, {upsert: true});
+       }else{
+            result = await infoModel.insertMany([{title, classify, img, content, order, isComment}]);      
+       }
 
         return result;
     }

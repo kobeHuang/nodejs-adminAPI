@@ -17,7 +17,7 @@ class Banner {
         let result = [];
         let total;
         const start = (pageNo - 1) * pageSize;
-        if(pos && !keywords && isShow === undefined){
+        if(!pos && !keywords && isShow === undefined){
             total = await bannerModel.find().count();
             result = await bannerModel.find().limit(pageSize).skip(start).sort({order: -1}) || [];
         }else{
@@ -42,7 +42,7 @@ class Banner {
     }
 
     static async insertBanner({ _id, title, url, pos, isShow }){
-        let result = '';
+        let result = null;
 
         if(url.indexOf('tmp/') != -1){
             url = url.replace('tmp/', 'upload/');
