@@ -56,7 +56,7 @@ module.exports = async(ctx, next) => {
         const filename = Path.basename(files.path);
         ctx.body = {
             code: "0",
-            data: `http://${ctx.request.header.host}/tmp/${filename}`
+            data: `http://localhost:3000/tmp/${filename}`
         }
     }catch(e) {
         ctx.sendError('1');

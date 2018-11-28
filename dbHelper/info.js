@@ -53,7 +53,7 @@ class Info{
             result = await infoModel.find().limit(pageSize).skip(start).sort({order: -1}) || [];
         }else{
             let query = {};
-            classify !== undefined && (
+            classify && (
                 query.classify = classify
             )
             keywords && (
@@ -62,8 +62,8 @@ class Info{
             status !== undefined && (
                 query.status = status
             )
-            total = await infoModel.find({ query }).count();
-            result = await infoModel.find({ query }).limit(pageSize).skip(start).sort({order: -1}) || [];
+            total = await infoModel.find( query ).count();
+            result = await infoModel.find( query ).limit(pageSize).skip(start).sort({order: -1}) || [];
         }
 
         return {
