@@ -145,7 +145,7 @@ class Info {
                 }
             }
         }catch(e){
-            
+            ctx.sendError('1');
         }
     }
 }

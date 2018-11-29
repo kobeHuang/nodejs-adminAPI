@@ -54,8 +54,6 @@ class Banner {
             result = await bannerModel.insertMany([{title, url, pos, isShow}]);      
        }
 
-       console.log(result);
-
         return result;
     }
 

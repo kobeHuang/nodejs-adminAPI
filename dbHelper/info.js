@@ -32,10 +32,8 @@ class Info{
     static async delClassify({name}){
         
         const dcRes = await infoClassifyModel.deleteMany({name});
-        console.log(dcRes);
         if(dcRes.ok){
             const diRes = await infoModel.deleteMany({classify: name});
-            console.log(diRes);
             return diRes;
         }else{
             return {

@@ -1,15 +1,15 @@
 const mongoose = require('mongoose');
 const db = require('./db');
 
-let LifeSchema = new mongoose.Schema({
-    title: String,
-    order: Number
+let LifeImageSchema = new mongoose.Schema({
+    topic: String,
+    img: String
 },{
     timestamps: true
 });
 
 
-LifeSchema.pre('save', (next) => {
+LifeImageSchema.pre('save', (next) => {
     if(next.isNew){
         this.createAt = this.updateAt = new Date();
     }else{
@@ -17,6 +17,6 @@ LifeSchema.pre('save', (next) => {
     }
 });
 
-const Life = db.model('Life', LifeSchema);
+const LifeImage = db.model('LifeImage', LifeImageSchema);
 
-module.exports = Life;
+module.exports = LifeImage;

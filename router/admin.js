@@ -38,8 +38,11 @@ module.exports = (app) => {
 
     //校园生活
     router.get('/life', app.controller.admin.life.list);
-    router.post('/life/save', app.controller.admin.info.save);
-    router.post('/life/del', app.controller.admin.life.del)
+    router.post('/life/save', app.controller.admin.life.save);
+    router.post('/life/del', app.controller.admin.life.del);
+    router.get('/lifeImage', app.controller.admin.life.lifeImage_list);
+    router.post('/lifeImage/save', app.controller.admin.life.lifeImage_save);
+    router.post('/lifeImage/del', app.controller.admin.life.lifeImage_del)
 
 
     //内容管理
