@@ -4,13 +4,20 @@ class Life {
     static async list(ctx, next){
         try{
             const { app } = ctx;
+            const { 
+                pageNo = 1,
+                pageSize = 10
+            } = ctx.request.query;
 
-            const data = await app.dbHelper.life.findLife();
+            const data = await app.dbHelper.life.findLife({ pageNo: parseInt(pageNo), pageSize: parseInt(pageSize) });
 
             ctx.body = {
                 code: "0",
                 data: {
-                    items: data
+                    items: data.result,
+                    count: data.total,
+                    pageNo,
+                    pageSize
                 }
             }
         }catch(e){
@@ -25,15 +32,16 @@ class Life {
             const { 
                 _id, 
                 title,
+                imgs,
                 order 
             } = ctx.request.body;
 
             if([title, order].indexOf(undefined) != -1){
                 ctx.sendError('107');
             }else{
-                const result = await app.dbHelper.life.insertLife({ _id, title, order });
+                const result = await app.dbHelper.life.insertLife({ _id, title, imgs, order });
                 if(result.ok || (result.length && result.length > 0)) {
-
+                    rename(imgs);
                     ctx.body = {
                         code: "0"
                     }
@@ -51,12 +59,12 @@ class Life {
     static async del(ctx, next){
         try{
             const { app } = ctx;
-            const { title } = ctx.request.body;
+            const { ids } = ctx.request.body;
 
-            if(!title){
+            if(!ids){
                 ctx.sendError('100');
             }else{
-                const result = await app.dbHelper.life.delLife({title});
+                const result = await app.dbHelper.life.delLife({ids});
                 if(result.ok) {
                     ctx.body = {
                         code: "0"

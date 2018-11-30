@@ -3,9 +3,7 @@ const db = require('./db');
 
 const ContentSchema = new mongoose.Schema({
     title: String,
-    content: String,
-    icon: String,
-    author: String
+    content: String
 }, {
     timestamps: true
 });

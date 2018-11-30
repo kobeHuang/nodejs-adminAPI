@@ -8,38 +8,46 @@ const lifeModel = require('../model/life');
 const lifeImageModel = require('../model/life_image');
 
 class Life{
-    static async findLife(){
+    static async findLife({ pageNo, pageSize }){
         let result = [];
-        result = await lifeModel.find().sort({order: -1}) || [];
+        let total;
+        const start = (pageNo - 1) * pageSize;
+        total = await lifeModel.find().count();
+        result = await lifeModel.find().limit(pageSize).skip(start).sort({order: -1}) || [];
 
-        return result;
+        return {
+            total,
+            result
+        };
     }
 
 
-    static async insertLife({ _id, title, order }) {
+    static async insertLife({ _id, title, imgs, order }) {
         let result = null;
+        const imgArr = imgs.split(',');
+
+        let images = imgArr.map(img => {
+            return img.replace('tmp/', 'upload/')
+        });
 
         if(_id){
-            result = await lifeModel.updateOne({_id: ObjectId(_id)}, {$set: {title, order}}, {upsert: true});
+            result = await lifeModel.updateOne({_id: ObjectId(_id)}, {$set: {title, imgs: images.join(','), order}}, {upsert: true});
         }else{
-            result = await lifeModel.insertMany([{title, order}]);      
+            result = await lifeModel.insertMany([{title, imgs: images.join(','), order}]);      
         }
 
         return result;
     }
     
-    static async delLife({ title }){
+    static async delLife({ ids }){
 
-        const dcRes = await infoClassifyModel.deleteMany({title});
-       
-        if(dcRes.ok){
-            const diRes = await infoModel.deleteMany({topic: title});
-            return diRes;
-        }else{
-            return {
-                ok: false
-            }
-        }
+        let idArr = ids.split(','),
+            objIds = [];
+        idArr.forEach(id => {
+            objIds.push(ObjectId(id));
+        });
+        const result = await lifeModel.deleteMany({_id: {$in: objIds}});
+        return result;
     }
 
 

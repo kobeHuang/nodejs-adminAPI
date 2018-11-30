@@ -2,27 +2,24 @@
  * content
  * content数据库操作助手
  */
-
+const ObjectId = require('mongodb').ObjectId;
 const contentModel = require('../model/content');
 
 class Content{
-    static async findContent({ keywords, pageNo, pageSize }){
-        const start = (pageNo - 1) * pageSize;
-        if(!keywords){
-            result = await contentModel.find().limit(pageSize).skip(start).sort({order: -1}) || [];
-        }else{
-            result = await contentModel.find({ title: { $regex: keywords } }).limit(pageSize).skip(start) || [];
+    static async findIntro(){
+        
+        let result = await contentModel.find({_id: ObjectId('5c00ee1c62792b962210ffb1')}) || [];
+
+        if(result.length > 0){
+            result = result[0];
         }
 
         return result;
     }
 
-    static async insertContent({ _id, title, content, icon, author }){
-        if(icon.indexOf('tmp/') != -1){
-            icon = icon.replace('tmp/', 'upload/');
-        }
-
-        const result = await contentModel.updateOne({_id: ObjectId(_id)}, {$set: {title, content, icon, author}}, {upsert: true});
+    static async insertIntro({ _id, title, content }){
+      
+        const result = await contentModel.updateOne({_id: ObjectId(_id)}, {$set: {title, content}}, {upsert: true});
 
         return result;
     }
