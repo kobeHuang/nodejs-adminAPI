@@ -26,7 +26,7 @@ class Content {
             }else{
                 const result = await app.dbHelper.content.insertIntro({ _id, title, content });
                 if(result.ok) {
-                    icon !== undefined && rename(icon);
+                   // icon !== undefined && rename(icon);
 
                     ctx.body = {
                         code: "0"

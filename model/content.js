@@ -8,14 +8,6 @@ const ContentSchema = new mongoose.Schema({
     timestamps: true
 });
 
-ContentSchema.pre('save', (next) => {
-    if(next.isNew){
-        this.createAt = this.updateAt = new Date();
-    }else{
-        this.updateAt = new Date();
-    }
-});
-
 
 let Content = db.model('Content', ContentSchema);
 

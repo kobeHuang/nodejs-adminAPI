@@ -14,15 +14,6 @@ let BannerSchema = new mongoose.Schema({
     timestamps: true
 })
 
-BannerSchema.pre('save', (next) => {
-    if(next.isNew){
-        this.createAt = this.updateAt = new Date();
-    }else{
-        this.updateAt = new Date();
-    }
-
-    next();
-});
 
 let Banner = db.model('Banner', BannerSchema);
 

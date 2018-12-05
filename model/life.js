@@ -10,13 +10,6 @@ let LifeSchema = new mongoose.Schema({
 });
 
 
-LifeSchema.pre('save', (next) => {
-    if(next.isNew){
-        this.createAt = this.updateAt = new Date();
-    }else{
-        this.updateAt = new Date();
-    }
-});
 
 const Life = db.model('Life', LifeSchema);
 

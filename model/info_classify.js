@@ -9,15 +9,6 @@ let ClassifySchema = new mongoose.Schema({
     timestamps: true
 });
 
-ClassifySchema.pre('save', (next) => {
-    if(next.isNew){
-        this.createAt = this.updateAt = new Date();
-    }else{
-        this.updateAt = new Date();
-    }
-
-    next();
-});
 
 let InfoClassify = db.model('InfoClassify', ClassifySchema);
 

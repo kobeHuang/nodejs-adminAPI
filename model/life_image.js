@@ -9,14 +9,6 @@ let LifeImageSchema = new mongoose.Schema({
 });
 
 
-LifeImageSchema.pre('save', (next) => {
-    if(next.isNew){
-        this.createAt = this.updateAt = new Date();
-    }else{
-        this.updateAt = new Date();
-    }
-});
-
 const LifeImage = db.model('LifeImage', LifeImageSchema);
 
 module.exports = LifeImage;

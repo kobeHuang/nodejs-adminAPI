@@ -31,13 +31,6 @@ InfoSchema.static.findByView = async function(id){
     return result;
 }
 
-InfoSchema.pre('save', (next) => {
-    if(next.isNew){
-        this.createAt = this.updateAt = new Date();
-    }else{
-        this.updateAt = new Date();
-    }
-});
 
 
 let Info = db.model('Info', InfoSchema);

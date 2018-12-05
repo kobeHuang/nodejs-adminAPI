@@ -15,17 +15,6 @@ let AdminSchema = new mongoose.Schema({
     timestamps: true
 });
 
-
-AdminSchema.pre('save', (next) => {
-    if(this.isNew) {
-        this.createAt = this.updateAt = new Date();
-    }else{
-        this.updateAt = new Date();
-    }
-
-    next();
-});
-
 let Admin = db.model('Admin', AdminSchema);
 
 

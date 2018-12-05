@@ -48,6 +48,9 @@ module.exports = (app) => {
     //内容管理
     router.get('/intro', app.controller.admin.content.intro);
     router.post('/intro/save', app.controller.admin.content.intro_save);
+    router.get('/menu', app.controller.admin.menu.list);
+    router.post('/menu/save', app.controller.admin.menu.save);
+    router.post('/menu/del', app.controller.admin.menu.del);
     
     return router;
 }
