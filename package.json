@@ -33,13 +33,20 @@
     "babel-preset-react": "^6.24.1",
     "bluebird": "^3.5.2",
     "chalk": "^2.4.1",
+    "css-loader": "^2.0.1",
     "ejs": "^2.6.1",
+    "extract-text-webpack-plugin": "^3.0.2",
     "koa-body": "^4.0.4",
     "koa-bodyparser": "^4.2.1",
     "koa-json": "^2.0.2",
     "koa-session": "^5.9.0",
     "koa-static": "^5.0.0",
     "koa-views": "^6.1.4",
-    "nodemon": "^1.18.8"
+    "nodemon": "^1.18.8",
+    "postcss": "^7.0.6",
+    "postcss-loader": "^3.0.0",
+    "postcss-salad": "^2.0.1",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.27.1"
   }
 }
