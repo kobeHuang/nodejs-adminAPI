@@ -1,18 +1,26 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
         <title><%= title %></title>
         <base href="/app">
         <script>
             window.Promise || document.write(
-                '<script src="../es6-promise.min.js"><\/script><script>ES6Promise.polyfill()<\/script>'), /android/i.test(
-                navigator.userAgent) || document.write('<script src="../fastclick.min.js"><\/script>');
+                '<script src="./static/es6-promise.min.js"><\/script><script>ES6Promise.polyfill()<\/script>'), /android/i.test(
+                navigator.userAgent) || document.write('<script src="./static/fastclick.min.js"><\/script>');
         </script>
     </head>
     <body>
         <div id="app"><%= root %></div>
         <script>
-
+            (function(win){
+                // 添加FastClick
+                if (!(/android/i.test(navigator.userAgent))) {
+                    FastClick.attach(document.body);
+                }
+            })(window)
         </script>
     </body>
 </html>

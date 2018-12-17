@@ -10,15 +10,19 @@ const api_error = require('./mi-api-error');
 const session = require('./mi-session');
 const validate = require('./mi-validate');
 
-function getUploadDirName(){
-    const date = new Date();
-    let month = Number.parseInt(date.getMonth()) + 1;
-    month = month.toString().length > 1 ? month : `0${month}`;
-    const dir = `${date.getFullYear()}${month}${date.getDate()}`;
-    return dir;
-}
 
 module.exports = (app) => {
+
+    if (process.env.NODE_ENV!=='production') {
+        const middleware = require('koa-webpack');
+        const Webpack=require('webpack')
+        const config = require('../config/webpack.dev.js');
+    
+        let compiler=Webpack(config)
+        app.use(middleware({
+            compiler:compiler
+        }))
+    }
 
     //设置静态路径
     app.use(staticFiles(Path.resolve(__dirname, '../public')));
