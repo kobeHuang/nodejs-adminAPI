@@ -2,7 +2,7 @@ const Router = require('koa-router')();
 const React = require('react');
 const ReatDOMServe = require('react-dom/server');
 
-const App = require('../app/server');
+const App = require('../app');
 
 
 Router.get(/\/app.*/, async (ctx, next) => {

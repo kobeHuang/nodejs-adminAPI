@@ -1,10 +1,9 @@
 {
   "name": "nodejs-adminapi",
   "version": "1.0.0",
-  "description": "koa2+mongodb",
-  "main": "index.js",
+  "description": "koa2+react16+webpack+mongodb",
   "scripts": {
-    "dev": "nodemon index.js",
+    "dev": "nodemon server.js",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,6 +28,7 @@
   "devDependencies": {
     "autoprefixer": "^9.4.3",
     "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
@@ -36,9 +36,9 @@
     "chalk": "^2.4.1",
     "clean-webpack-plugin": "^1.0.0",
     "copy-webpack-plugin": "^4.6.0",
+    "cross-env": "^5.2.0",
     "css-loader": "^2.0.1",
     "ejs": "^2.6.1",
-    "extract-text-webpack-plugin": "^3.0.2",
     "koa-body": "^4.0.4",
     "koa-bodyparser": "^4.2.1",
     "koa-json": "^2.0.2",
@@ -52,6 +52,7 @@
     "postcss-pxtorem": "^4.0.1",
     "postcss-salad": "^2.0.1",
     "react-hot-loader": "^4.6.0",
+    "react-router": "^4.3.1",
     "style-loader": "^0.23.1",
     "webpack": "^4.27.1",
     "webpack-hot-middleware": "^2.24.3",

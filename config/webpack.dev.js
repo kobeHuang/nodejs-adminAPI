@@ -14,7 +14,7 @@ module.exports = Merge(baseConfig, {
     ],
     
     plugins:[
-        new Webpack.HotModuleReplacementPlugin(),
+        //new Webpack.HotModuleReplacementPlugin(),
         new Webpack.DefinePlugin({
           'process.env': {
             'NODE_ENV': JSON.stringify('development')

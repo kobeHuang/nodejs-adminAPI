@@ -14,20 +14,23 @@ const validate = require('./mi-validate');
 module.exports = (app) => {
 
     if (process.env.NODE_ENV!=='production') {
-        const middleware = require('koa-webpack');
+        const koaWebpack = require('koa-webpack');
         const Webpack=require('webpack')
         const config = require('../config/webpack.dev.js');
     
-        let compiler=Webpack(config)
-        app.use(middleware({
+        let compiler=Webpack(config);
+        koaWebpack({
             compiler:compiler
-        }))
+        })
+        .then(middleware => {
+            app.use(middleware);
+        })
     }
 
     //设置静态路径
     app.use(staticFiles(Path.resolve(__dirname, '../public')));
     //将ejs设置为我们的模板引擎
-    app.use(koaViews(Path.resolve(__dirname, '../views', { map: { html: 'ejs' } })));
+    app.use(koaViews(Path.resolve(__dirname, '../views'), { map: { html: 'ejs' } }));
 
     session(app);
     app.use(json());
