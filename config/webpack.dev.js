@@ -10,7 +10,7 @@ module.exports = Merge(baseConfig, {
         //https://blog.csdn.net/huangpb123/article/details/78556652
         'react-hot-loader/patch',
         'webpack-hot-middleware',
-        Path.resolve(__dirname, '../app/index.js')
+        Path.resolve(__dirname, '../app/server.js')
     ],
     
     plugins:[
