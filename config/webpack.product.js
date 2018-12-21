@@ -3,6 +3,7 @@ const Merge = require('webpack-merge');
 const Webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const baseConfig = require('./webpack.base.conf');
 
@@ -11,8 +12,8 @@ module.exports = Merge(baseConfig, {
         app: Path.resolve(__dirname, '../app/index.js')
     },
     plugins: [
-        new CleanWebpackPlugin(['public/app/*.*'],{
-            root:path.resolve(__dirname,'../')
+        new CleanWebpackPlugin(['public/client/*.*'],{
+            root:Path.resolve(__dirname,'../')
         }),
         // extract css into its own file
         new ExtractTextPlugin({
@@ -22,8 +23,8 @@ module.exports = Merge(baseConfig, {
         // copy custom static assets
         new CopyWebpackPlugin([
             {
-                from: path.resolve(__dirname, '../app/static'),
-                to: path.resolve(__dirname, '../public/app/static'),
+                from: Path.resolve(__dirname, '../app/static'),
+                to: Path.resolve(__dirname, '../public/client/static'),
                 ignore: ['.*']
             }
         ]),
