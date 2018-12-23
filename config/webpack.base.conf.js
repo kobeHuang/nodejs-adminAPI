@@ -2,7 +2,7 @@ const Path = require('path');
 
 module.exports = {
     output: {
-        filename: '[name].bundle.[hash].js',
+        filename: '[name].bundle.js',
         path: Path.resolve(__dirname, '../public/client'),
         publicPath: '/'
     },

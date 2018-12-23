@@ -8,17 +8,13 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const baseConfig = require('./webpack.base.conf');
 
 module.exports = Merge(baseConfig, {
+    devtool:'null',//注意，这能大大压缩我们的打包代码
     entry: {
-        app: Path.resolve(__dirname, '../app/index.js')
+        app: Path.resolve(__dirname, '../app/server.js')
     },
     plugins: [
-        new CleanWebpackPlugin(['public/client/*.*'],{
+        new CleanWebpackPlugin(['public/client/*'],{
             root:Path.resolve(__dirname,'../')
-        }),
-        // extract css into its own file
-        new ExtractTextPlugin({
-            filename: 'static/css/[name].[contenthash].css',
-            allChunks: true,
         }),
         // copy custom static assets
         new CopyWebpackPlugin([
@@ -28,6 +24,11 @@ module.exports = Merge(baseConfig, {
                 ignore: ['.*']
             }
         ]),
+        // extract css into its own file
+        new ExtractTextPlugin({
+            filename: 'static/css/[name].[contenthash].css',
+            allChunks: true
+        }),
         new Webpack.DefinePlugin({
             'process.env': {
               'NODE_ENV': JSON.stringify('production')
