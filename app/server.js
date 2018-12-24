@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { StaticRouter } from 'react-router';
 
-class App extends Component{
+import App from './app';
+
+class ServeDOM extends Component{
     render() {
         return(
             <StaticRouter basename="/app" context={this.props.context} location={this.props.url}>
-                <div>test test test...</div>
+                <App />
             </StaticRouter>
         )
     }
 }
 
-export default App;
+export default ServeDOM;

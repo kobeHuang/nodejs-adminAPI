@@ -14,7 +14,6 @@ const validate = require('./mi-validate');
 module.exports = (app) => {
 
     if (process.env.NODE_ENV!=='production') {
-        console.log('abc')
         const koaWebpack = require('koa-webpack');
         const Webpack=require('webpack')
         const config = require('../config/webpack.dev.js');
