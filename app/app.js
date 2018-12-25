@@ -1,10 +1,10 @@
-import react, { Component } from 'react';
+import React, { Component } from 'react';
 import { 
     Route,
     Switch
 } from 'react-router-dom';
 
-import Home from 'views/home'
+import Home from './views/home'
 
 class App extends Component{
     render() {
@@ -13,7 +13,7 @@ class App extends Component{
                 <Switch>
                     <Route path="/" component={Home} exact  />
                 </Switch>
-                <style jsx>{`
+                <style jsx="true">{`
                     *{
                         margin: 0;
                         padding: 0;

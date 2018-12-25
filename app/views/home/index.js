@@ -1,7 +1,15 @@
 import react, { Component } from 'react';
 
-class Home extends Comment{
-    
+import './style.scss';
+
+class Home extends Component{
+    render() {
+        return(
+            <div className="home">
+               
+            </div>
+        )
+    }
 }
 
 export default Home;
