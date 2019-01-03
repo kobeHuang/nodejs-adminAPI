@@ -5,27 +5,16 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
         <title>智慧校园</title>
-        <base href="/client">
+        <base href="/client/">
         <script>
-            var client;
-            <% if(process.env.NODE_ENV !=='production'){ %>
-                client = '';
-            <% }else{ %>
-                client = '/client';
-            <% } %>
-            //var client = process.env.NODE_ENV !=='production' ? '' : '/client';
             window.Promise || document.write(
-                `<script src="${client}/static/es6-promise.min.js"><\/script><script>ES6Promise.polyfill()<\/script>`), /android/i.test(
-                navigator.userAgent) || document.write(`<script src="${client}/static/fastclick.min.js"><\/script>`);
+                `<script src="/client/static/es6-promise.min.js"><\/script><script>ES6Promise.polyfill()<\/script>`), /android/i.test(
+                navigator.userAgent) || document.write(`<script src="/client/static/fastclick.min.js"><\/script>`);
         </script>
     </head>
     <body>
         <div id="app"><%- root %></div>
-        <% if(process.env.NODE_ENV !=='production'){ %>
-            <script src="/main.bundle.js"></script>
-        <% }else{ %>
-            <script src="/client/app.bundle.js"></script>
-        <% } %>
+        <script src="/client/app.bundle.js"></script>
         <script>
             (function(win){
                 // 添加FastClick

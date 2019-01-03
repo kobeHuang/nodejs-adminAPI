@@ -4,14 +4,16 @@ import {
     Switch
 } from 'react-router-dom';
 
-import Home from './views/home'
+import Home from './views/home';
+import NoMatch from './views/noMatch';
 
 class App extends Component{
     render() {
         return(
-            <div>
+            <div className="root">
                 <Switch>
-                    <Route path="/" component={Home} exact  />
+                    <Route path="/index" component={Home} exact  />
+                    <Route component={NoMatch} />
                 </Switch>
                 <style jsx="true">{`
                     *{
@@ -28,6 +30,9 @@ class App extends Component{
                         overflow-x: hidden;
                         color: #686868;
                         line-height: 1.6;
+                    }
+                    #app,.root{
+                        height: 100%;
                     }
                 `}</style>
 
