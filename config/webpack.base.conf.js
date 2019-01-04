@@ -13,9 +13,11 @@ module.exports = {
         rules: [
             {
                 test: /\.s?css$/,
-                exclude:/node_modules/,
-                include: Path.resolve(__dirname, "../app"),
                 use: ["style-loader",'css-loader','postcss-loader']
+            },
+            {
+                test: /\.less$/,
+                use: ["style-loader",'css-loader']
             },
             {
                 test: /\.jsx?$/,
