@@ -10,7 +10,7 @@ const baseConfig = require('./webpack.base.conf');
 module.exports = Merge(baseConfig, {
     devtool:'null',//注意，这能大大压缩我们的打包代码
     entry: {
-        app: Path.resolve(__dirname, '../app/server.js')
+        app: Path.resolve(__dirname, '../app/index.js')
     },
     plugins: [
         new CleanWebpackPlugin(['public/client/*'],{

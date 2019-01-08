@@ -8,16 +8,8 @@ import './style.scss';
 class Home extends Component{
 
     state = {
-        imgs: ['1', '2', '3'],
+        imgs: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
         imgHeight: 150
-    }
-
-    componentDidMount() {
-        setTimeout(() => {
-            this.setState({
-              data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
-            });
-        }, 100);
     }
 
     renderCarousel() {
@@ -34,14 +26,16 @@ class Home extends Component{
                     {
                         this.state.imgs.map((val, idx) => (
                             <a
-                            href="#" 
-                            style={{
-                                display: 'block',
-                                position: 'relative',
-                                top: this.state.slideIndex === idx ? -10 : 0,
-                                height: this.state.imgHeight,
-                                boxShadow: '2px 1px 1px rgba(0, 0, 0, 0.2)'
-                            }}>
+                                key={val}
+                                href="#"
+                                style={{
+                                    display: 'block',
+                                    position: 'relative',
+                                    top: this.state.slideIndex === idx ? -10 : 0,
+                                    height: this.state.imgHeight,
+                                    boxShadow: '2px 1px 1px rgba(0, 0, 0, 0.2)',
+                                }}
+                            >
                             <img
                                 src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
                                 style={{ width: '100%', verticalAlign: 'top' }}

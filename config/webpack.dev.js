@@ -12,7 +12,7 @@ module.exports = Merge(baseConfig, {
         //https://blog.csdn.net/huangpb123/article/details/78556652
         //'react-hot-loader/patch',
         //'webpack-hot-middleware/client?reload=true',
-        Path.resolve(__dirname, '../app/server.js')
+        Path.resolve(__dirname, '../app/index.js')
     ],
     output: {
         publicPath: '/client/'
