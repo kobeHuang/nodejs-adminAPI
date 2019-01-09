@@ -17,6 +17,16 @@ class Home extends Component{
                         <span className="home-welcome-font">欢迎来到智慧学校</span>
                     </div>
                 </div>
+                <div className="home-cutoff"></div>
+                <div className="home-menu">
+                    <div className="home-menu-item">
+                        <div className="home-menu-icon">
+                            <img src="http://p.qpic.cn/smartcampus/0/25319021966887216/0" />
+                        </div>
+                        <span className="home-menu-name">学校简介</span>
+                    </div>
+                    <div className="home-menu-item"></div>
+                </div>
             </div>
         )
     }
