@@ -1,9 +1,36 @@
-.home {
+.home{
     height: 100%;
-    padding-top: .3rem;
+    padding-top: 16px;
     background-color: #fff;
 }
-.space-carousel {
-    padding: 16px;
-    overflow: hidden;
+@component-namespace home {
+    @component space-carousel {
+        padding: 16px;
+        overflow: hidden;
+    }
+    @component welcome{
+        margin-top: 50px;
+        padding: 24px;
+        color: rgb(108, 129, 152);
+        font-size: 34px;
+        text-align: center;
+        @descendent line{
+            position: absolute;
+            right: 0;
+            bottom: 22px;
+            border-top: 4px solid #0cb181;
+            width: 100%;
+            height: 1px;
+            transform: scaleY(.5);
+            transform-origin: 0 0;
+            border-color: rgb(179, 208, 215);
+        }
+        @descendent font{
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+            padding: 0 24px;
+            background-color: #fff;
+        }
+    }
 }
