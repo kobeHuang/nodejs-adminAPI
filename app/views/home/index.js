@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import './style.scss';
 import Swiper from './swiper';
+import Menu from './menu';
 
 
 
@@ -18,15 +19,7 @@ class Home extends Component{
                     </div>
                 </div>
                 <div className="home-cutoff"></div>
-                <div className="home-menu">
-                    <div className="home-menu-item">
-                        <div className="home-menu-icon">
-                            <img src="http://p.qpic.cn/smartcampus/0/25319021966887216/0" />
-                        </div>
-                        <span className="home-menu-name">学校简介</span>
-                    </div>
-                    <div className="home-menu-item"></div>
-                </div>
+                <Menu />
             </div>
         )
     }
