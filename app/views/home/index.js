@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 import './style.scss';
 import Swiper from './swiper';
 import Menu from './menu';
+import NewsItem from '../../components/newsItem';
 
 
 
@@ -20,6 +23,16 @@ class Home extends Component{
                 </div>
                 <div className="home-cutoff"></div>
                 <Menu />
+                <div className="home-cutoff"></div>
+                <div className="home-news">
+                    <p className="home-news-title">校园新闻</p>
+                    <div>
+                        <NewsItem />
+                        <NewsItem />
+                    </div>
+                    <Link to="/news" className="home-news-more">更多新闻 >></Link>
+                </div>
+
             </div>
         )
     }

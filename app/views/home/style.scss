@@ -2,6 +2,7 @@
     height: 100%;
     padding-top: 16px;
     background-color: #fff;
+    overflow-y: auto;
 }
 @component-namespace home {
     @component space-carousel {
@@ -34,9 +35,9 @@
         }
     }
     @component cutoff{
-        height: 1px;
-        border-top: 1px solid #e6eaea;
-        margin: 20px 0;
+        height: 2px;
+        border-top: 2px solid #e6eaea;
+        margin: 30px 0 20px;
     }
     @component menu{
         display: flex;
@@ -68,4 +69,24 @@
             color: rgb(110, 125, 143);
         }
     }
+    @component news{
+        padding-top: 20px;
+        @descendent title{
+            margin: 30px;
+            padding-left: 20px;
+            border-left: 20px solid rgb(142, 178, 187);
+            color: rgb(87, 108, 132);
+            font-size: 36px;
+            line-height: 42px;
+        }
+        @descendent more{
+            display: block;
+            height: 66px;
+            line-height: 66px;
+            text-align: center;
+            background: #f4f8f9;
+            color: #6e7d8f; 
+        }
+    }
+
 }

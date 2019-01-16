@@ -4,7 +4,10 @@ import {
     Switch
 } from 'react-router-dom';
 
+import './assets/css/common.scss';
+
 import Home from './views/home';
+import News from './views/news';
 import NoMatch from './views/noMatch';
 
 class App extends Component{
@@ -12,7 +15,8 @@ class App extends Component{
         return(
             <div className="root">
                 <Switch>
-                    <Route path="/index" component={Home} exact  />
+                    <Route path="/index" component={Home}  />
+                    <Route path="/news" component={News}/>
                     <Route component={NoMatch} />
                 </Switch>
                 <style jsx="true">{`
