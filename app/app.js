@@ -19,7 +19,7 @@ class App extends Component{
         return(
             <div className="root">
                 <Switch>
-                    <Route path="/" component={Home} exact  />
+                    <Route path="/index" component={Home} exact  />
                     <Route path="/my-campus" component={MyCampus} />
                     <Route path="/news" component={News} />
                     <Route path="/prize" component={Prizes} />

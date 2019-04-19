@@ -16,7 +16,15 @@ module.exports = Merge(baseConfig, {
     ],
     output: {
         publicPath: '/client/'
-    },  
+    },
+    module: {
+        rules: [
+            {
+                test: /\.s?css$/,
+                use: ["style-loader",'css-loader','postcss-loader']
+            },
+        ]
+    },
     plugins:[
         new CopyWebpackPlugin([
             {

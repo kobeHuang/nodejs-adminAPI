@@ -12,6 +12,19 @@ module.exports = Merge(baseConfig, {
     entry: {
         app: Path.resolve(__dirname, '../app/index.js')
     },
+    module: {
+        rules: [
+            {
+                test: /\.s?css$/,
+                use: ['isomorphic-style-loader',{
+                        loader: 'css-loader',
+                        options: {modules: true}
+                    },
+                    'postcss-loader'
+                ]
+            }
+        ]
+    },
     plugins: [
         new CleanWebpackPlugin(['public/client/*'],{
             root:Path.resolve(__dirname,'../')

@@ -12,14 +12,6 @@ module.exports = {
     module: {
         rules: [
             {
-                test: /\.s?css$/,
-                use: ["style-loader",'css-loader','postcss-loader']
-            },
-            {
-                test: /\.less$/,
-                use: ["style-loader",'css-loader']
-            },
-            {
                 test: /\.jsx?$/,
                 exclude:/node_modules/,
                 include: [Path.resolve(__dirname, '../app')],

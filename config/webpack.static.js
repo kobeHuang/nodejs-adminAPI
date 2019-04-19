@@ -26,6 +26,14 @@ module.exports = Merge(baseConfig, {
         compress: true,
         publicPath: '/'
     },
+    module: {
+        rules: [
+            {
+                test: /\.s?css$/,
+                use: ["style-loader",'css-loader','postcss-loader']
+            }
+        ]
+    },
     plugins: [
         new CopyWebpackPlugin([
             {
