@@ -30,7 +30,7 @@ class Home extends Component{
                         <NewsItem />
                         <NewsItem />
                     </div>
-                    <Link to="/news" className="home-news-more">更多新闻 >></Link>
+                    <Link to="news" className="home-news-more">更多新闻 >></Link>
                 </div>
 
             </div>

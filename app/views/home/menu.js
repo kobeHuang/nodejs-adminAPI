@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import { Link } from 'react-router-dom';
+
 
 class Menu extends Component {
     render() {
@@ -9,19 +11,19 @@ class Menu extends Component {
                     <div className="home-menu-icon">
                         <img src="http://p.qpic.cn/smartcampus/0/25319021966887216/0" />
                     </div>
-                    <span className="home-menu-name">学校简介</span>
+                    <Link to="/my-campus" className="home-menu-name">学校简介</Link>
                 </div>
                 <div className="home-menu-item">
                     <div className="home-menu-icon">
                         <img src="http://p.qpic.cn/smartcampus/0/25319021795367092/0" />
                     </div>
-                    <span className="home-menu-name">校园新闻</span>
+                    <Link to="/news" className="home-menu-name">校园新闻</Link>
                 </div>
                 <div className="home-menu-item">
                     <div className="home-menu-icon home-menu-hg">
                         <img src="http://p.qpic.cn/smartcampus/0/25319023539621628/0" />
                     </div>
-                    <span className="home-menu-name">荣获奖项</span>
+                    <Link to="/prize" className="home-menu-name">荣获奖项</Link>
                 </div>
                 <div className="home-menu-item">
                     <div className="home-menu-icon">
@@ -33,7 +35,7 @@ class Menu extends Component {
                     <div className="home-menu-icon">
                         <img src="http://p.qpic.cn/smartcampus/0/25319021886291474/0" />
                     </div>
-                    <span className="home-menu-name">校园生活</span>
+                    <Link to="/life" className="home-menu-name">校园生活</Link>
                 </div>
                 <div className="home-menu-item">
                     <div className="home-menu-icon home-menu-hg">

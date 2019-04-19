@@ -8,6 +8,10 @@ import './assets/css/common.scss';
 
 import Home from './views/home';
 import News from './views/news';
+import Prizes from './views/prize';
+import MyCampus from './views/my-campus';
+import Life from './views/life';
+import Detail from './views/detail';
 import NoMatch from './views/noMatch';
 
 class App extends Component{
@@ -15,8 +19,12 @@ class App extends Component{
         return(
             <div className="root">
                 <Switch>
-                    <Route path="/index" component={Home}  />
-                    <Route path="/news" component={News}/>
+                    <Route path="/" component={Home} exact  />
+                    <Route path="/my-campus" component={MyCampus} />
+                    <Route path="/news" component={News} />
+                    <Route path="/prize" component={Prizes} />
+                    <Route path="/life" component={Life} />
+                    <Route path="/article/:type/:id" component={Detail} />
                     <Route component={NoMatch} />
                 </Switch>
                 <style jsx="true">{`

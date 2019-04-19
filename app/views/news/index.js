@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
-import { 
-    Route,
-    Switch
-} from 'react-router-dom';
 
-import List from './list';
-import Detail from './detail';
+import NewsItem from '../../components/newsItem';
 
 class News extends Component {
+
+    state ={
+        data: ['1','2','3','4']
+    }
+    
     render() {
         return(
-            <div className="news">
-                <Switch>
-                    <Route path="/news" component={List} exact />
-                    <Route path="/news/detail" component={Detail} />
-                </Switch>
+            <div className="newsList">
+                {
+                    this.state.data.map(val => (
+                        <NewsItem key={val} />
+                    ))
+                }
                 <style jsx="true">{`
-                    .news {
+                    .newsList {
                         height: 100%;
+                        background: #fff;
                     }
                 `}
                 </style>

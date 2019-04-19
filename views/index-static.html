@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=0">
+        <title>智慧校园</title>
+        <base href="/">
+        <script>
+            window.Promise || document.write(
+                `<script src="/static/es6-promise.min.js"><\/script><script>ES6Promise.polyfill()<\/script>`), /android/i.test(
+                navigator.userAgent) || document.write(`<script src="/static/fastclick.min.js"><\/script>`);
+        </script>
+    </head>
+    <body>
+        <div id="app"></div>
+        <script>
+            (function(w){
+                var rem;
+                // 添加FastClick
+                if (!(/android/i.test(navigator.userAgent))) {
+                    FastClick.attach(document.body);
+                }
+                setREM();
+
+                // 修复低版本安卓机rem计算不准确
+                function fixAndroidRem() {
+                    var div = document.createElement('div');
+                    div.style.width = '1rem';
+                    div.style.visibility = 'hidden';
+                    document.body.appendChild(div);
+                    // 实际宽度
+                    var realWidth = div.clientWidth;
+                    // 预期宽度
+                    var expectWidth = rem;
+                    var ratio = realWidth / expectWidth;
+                    // 如果实际宽度/预期宽度的比例差超过0.2,则使用该比例重新计算页面的fontSize
+                    if (ratio > 1.2 || ratio < 0.8) {
+                    fontElm.innerHTML = 'html{font-size:' + rem / ratio + 'px!important;}';
+                    w.rem = rem / ratio;
+                    }
+                    document.body.removeChild(div);
+                }
+
+                //定义rem值
+                function setREM() {
+                    var docElm = document.documentElement,
+                    fontElm = document.createElement('style'),
+                    docElmWidth = docElm.clientWidth;
+                    if (docElm.clientWidth > 750) {
+                    docElmWidth = 750;
+                    }
+                    rem = docElmWidth / 7.5;
+                    w.rem = rem;
+                    //设置html的fontsize
+                    document.getElementsByTagName('head')[0].appendChild(fontElm);
+                    fontElm.innerHTML = 'html{font-size:' + rem + 'px!important;}';
+
+                    if (rem == 0) {
+                        setTimeout(function () {
+                            setREM();
+                        }, 500)
+                    } else {
+                        fixAndroidRem();
+                    }
+                }
+            })(window)
+        </script>
+    </body>
+</html>

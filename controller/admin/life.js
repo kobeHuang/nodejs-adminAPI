@@ -7,7 +7,7 @@ class Life {
             const { 
                 pageNo = 1,
                 pageSize = 10
-            } = ctx.request.query;
+            } = ctx.request.body;
 
             const data = await app.dbHelper.life.findLife({ pageNo: parseInt(pageNo), pageSize: parseInt(pageSize) });
 
