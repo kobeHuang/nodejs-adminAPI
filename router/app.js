@@ -1,5 +1,6 @@
 const Router = require('koa-router')();
 const React = require('react');
+import { StaticRouter } from 'react-router';
 import StyleContext from 'isomorphic-style-loader/StyleContext';
 const ReatDOMServe = require('react-dom/server');
 
@@ -12,9 +13,11 @@ Router.get('*', async (ctx, next) => {
     const insertCss = (...styles) => styles.forEach(style => css.add(style._getCss()))
     const context = {};
     const html = ReatDOMServe.renderToString(
-        <StyleContext.Provider value={{ insertCss }}>
-            <ServeDOM url={url} context={context} />
-        </StyleContext.Provider>
+        <StaticRouter basename="/app" context={{insertCss}} location={url}>
+            <StyleContext.Provider value={{ insertCss }}>
+                <ServeDOM />
+            </StyleContext.Provider>
+        </StaticRouter>
     )
     await ctx.render('index', {
         root: html,
