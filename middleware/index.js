@@ -5,17 +5,17 @@ const staticFiles = require('koa-static');
 const koaViews = require('koa-views');
 const koaBody = require('koa-body');
 
-const mount = require('./mi-mount');
-const api_error = require('./mi-api-error');
-const session = require('./mi-session');
-const validate = require('./mi-validate');
+import mount from './mi-mount';
+import api_error from './mi-api-error';
+import session from './mi-session';
+import validate from './mi-validate';
 
 
-module.exports = (app) => {
-    if (process.env.NODE_ENV!=='production') {
+export default (app) => {
+    /*if (process.env.NODE_ENV!=='production') {
         const koaWebpack = require('koa-webpack');
         const Webpack=require('webpack')
-        const config = require('../config/webpack.dev.js');
+        const config = require('../config/webpack.client.js');
     
         let compiler=Webpack(config);
         koaWebpack({
@@ -24,7 +24,7 @@ module.exports = (app) => {
         .then(middleware => {
             app.use(middleware);
         })
-    }
+    }*/
 
     //设置静态路径
     app.use(staticFiles(Path.resolve(__dirname, '../public')));
@@ -56,11 +56,11 @@ module.exports = (app) => {
         app,
         mounts: [
             {
-                path: Path.join(__dirname, '../controller'),
+                path: './controller',
                 name: 'controller'
             },
             {
-                path: Path.join(__dirname, '../dbHelper'),
+                path: './controller',
                 name: 'dbHelper'
             }
         ]

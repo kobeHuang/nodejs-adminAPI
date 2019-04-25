@@ -2,6 +2,7 @@ const Path = require('path');
 const Merge = require('webpack-merge');
 const Webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const baseConfig = require('./webpack.base.conf');
@@ -15,17 +16,30 @@ module.exports = Merge(baseConfig, {
         Path.resolve(__dirname, '../app/index.js')
     ],
     output: {
+        filename: 'app.bundle.js',
+        path: Path.resolve(__dirname, '../public/client'),
         publicPath: '/client/'
     },
     module: {
         rules: [
             {
-                test: /\.s?css$/,
-                use: ["style-loader",'css-loader','postcss-loader']
+                test: /\.css$/,
+                use: ["style-loader",'css-loader']
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: require.resolve('url-loader'),
+                options: {
+                    limit: 8192,
+                    name: 'static/img/[name].[hash:7].[ext]'
+                }
             },
         ]
     },
     plugins:[
+        new CleanWebpackPlugin(['public/client/*'],{
+            root:Path.resolve(__dirname,'../')
+        }),
         new CopyWebpackPlugin([
             {
                 from: Path.resolve(__dirname, '../app/static'),
@@ -33,7 +47,6 @@ module.exports = Merge(baseConfig, {
                 ignore: ['.*']
             }
         ]),
-        //new Webpack.HotModuleReplacementPlugin(),
         new Webpack.DefinePlugin({
           'process.env': {
             'NODE_ENV': JSON.stringify('development')

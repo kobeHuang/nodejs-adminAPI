@@ -3,12 +3,12 @@ import withStyles from 'isomorphic-style-loader/withStyles';
 
 import { Link } from 'react-router-dom';
 
-import s from './style.scss';
+import s from './style.css';
 import Swiper from './swiper';
 import Menu from './menu';
 import NewsItem from '../../components/newsItem';
 
-
+console.log(s);
 
 class Home extends Component{
 
@@ -38,7 +38,5 @@ class Home extends Component{
         )
     }
 }
-
-console.log(`styles=${JSON.stringify(s)}`);
 
 export default withStyles(s)(Home);

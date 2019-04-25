@@ -45,7 +45,9 @@ class MImageItem extends Component{
                                 style={{ width: '100%', verticalAlign: 'top' }}
                                 onLoad={() => {
                                 // fire window resize event to change height
-                                window.dispatchEvent(new Event('resize'));
+                                    if (typeof window !== 'undefined') {
+                                        window.dispatchEvent(new Event('resize'));
+                                    }  
                                 }}
                             />
                             </a>

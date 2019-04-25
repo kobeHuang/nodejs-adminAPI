@@ -1,0 +1,18 @@
+.intro{
+    background: #fff;
+    height: 100%;
+}
+.intro-header{
+    font-size: .28rem;
+    padding: .2rem;
+    text-align: center;
+    color: rgb(110, 125, 143);
+    border-bottom: 1px solid rgb(221, 222, 225);
+}
+.intro-header-img{
+    width: .5rem;
+    height: .5rem; 
+}
+.intro-content{
+    padding: .6rem .2rem;   
+}

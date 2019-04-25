@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import withStyles from 'isomorphic-style-loader/withStyles';
 import { 
     Route,
     Switch
 } from 'react-router-dom';
 
-import './assets/css/common.scss';
+import s from './assets/css/common.css';
 
 import Home from './views/home';
 import News from './views/news';

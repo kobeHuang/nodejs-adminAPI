@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './style.scss';
+import './style.css';
 
 class MyCampus extends Component {
     render(){

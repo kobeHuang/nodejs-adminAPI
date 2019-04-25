@@ -1,0 +1,41 @@
+.prize {
+    height: 100%;
+    background: #fff;
+}
+.prize-header{
+    font-size: .38rem;
+    color: rgb(105, 105, 105);
+    text-align: center;
+    font-weight: bold;
+    padding: .3rem;
+}
+.prize-header-con{
+    position: relative;
+    width: 100%;
+    word-break: break-all;
+}
+.prize-header-line{
+    position: absolute;
+    right: 0;
+    bottom: .25rem;
+    border-top: 2px solid #0cb181;
+    width: 100%;
+    height: 1px;
+    transform: scaleY(.5);
+    transform-origin: 0 0;
+}
+.prize-header-msg{
+    position: relative;
+    z-index: 2;
+    padding: 0 .24rem;
+    background: #fff;
+}
+.prize-intro{
+    padding: .2rem .24rem;
+    font-size: .32rem;
+    color: rgb(31, 201, 158);
+    background: rgb(242, 242, 242);   
+}
+.prize-list{
+    padding-top: .2rem;
+}

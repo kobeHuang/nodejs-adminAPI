@@ -67,4 +67,4 @@ class MongooseStore {
     }
 }
 
-module.exports = MongooseStore;
+export default MongooseStore;

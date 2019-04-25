@@ -1,7 +1,9 @@
-const Koa = require('koa');
+import Koa from 'koa';
+
+import router from './router';
+import middleware from './middleware';
+
 const app = new Koa();
-const router = require('./router');
-const middleware = require('./middleware');
 
 middleware(app);
 router(app);

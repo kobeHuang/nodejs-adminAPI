@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import './style.scss';
+import './style.css';
 import ImageItem from '../../components/mImageItem';
 
 class Life extends Component{

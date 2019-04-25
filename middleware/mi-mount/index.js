@@ -7,16 +7,17 @@ const fs = require('fs');
 
 const Readdirectory = (path) => {
     let content = {};
+     path = path.replace(/\\/g,'/');
     fs.readdirSync(path).forEach(filename => {
-        const childPath = Path.join(path, filename);
+        let childPath = Path.join(path, filename);
         const stat = fs.statSync(childPath);
 
         let extname = Path.extname(filename);
         const fname = Path.basename(filename, extname);
-
         if(stat.isFile()) {
             let extname = Path.extname(filename);
-            if(extname == '.js'){ 
+            if(extname == '.js'){
+                childPath = Path.join(process.cwd(), childPath);
                 content[fname] = require(childPath);
             }
         }else{
@@ -26,7 +27,7 @@ const Readdirectory = (path) => {
     return content;
 }
 
-module.exports = (opts) => {
+export default (opts) => {
     let { app, mounts = [] } = opts;
     if(!app) {
         throw new Error("the app params is necessary!")

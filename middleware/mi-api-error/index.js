@@ -20,7 +20,7 @@ const config = {
     "803": "数据库操作出错，请重试"
 }
 
-module.exports = () => {
+export default () => {
     function sendError(code) {
         this.body = {
             code,

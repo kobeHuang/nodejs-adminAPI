@@ -4,7 +4,7 @@
 
 const koaSession = require('koa-session');
 const db = require('../../model/db');
-const MongooseStore = require('./store');
+import MongooseStore from './store';
 
 const session_config = {
     key: 'koa:campusSess',
@@ -19,7 +19,7 @@ const session_config = {
     })
 };
 
-module.exports = (app) => {
+export default (app) => {
     app.keys = ['1218705779913980b192f0abad40c1aa'];
     app.use(koaSession(session_config, app));
 }

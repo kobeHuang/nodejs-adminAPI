@@ -1,6 +1,6 @@
-const Router = require('koa-router');
+import Router from 'koa-router';
 
-module.exports = (app) => {
+export default (app) => {
     const router = new Router();
 
     router.post('/upload', app.controller.upload);

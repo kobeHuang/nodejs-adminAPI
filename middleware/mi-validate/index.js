@@ -2,7 +2,7 @@
  * 请求体/用户登录状态认证
  */
 
-module.exports = () => {
+export default () => {
 
     return async (ctx, next) => {
         const { session } = ctx;

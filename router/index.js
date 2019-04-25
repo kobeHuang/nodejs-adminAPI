@@ -1,9 +1,13 @@
-const router = require('koa-router')();
-const admin = require('./admin');
-const upload = require('./upload');
-const router_app = require('./app');
+import Router from 'koa-router';
+import admin from './admin';
+import upload from './upload';
+import router_app from './app';
 
-module.exports = (app) => {
+
+
+export default (app) => {
+    const router = new Router();
+
     const router_admin = admin(app);
     const router_upload = upload(app);
     router.use('/api', router_admin.routes(), router_admin.allowedMethods());

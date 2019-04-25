@@ -46,7 +46,9 @@ class Swiper extends Component {
                                 src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
                                 style={{ width: '100%', verticalAlign: 'top' }}
                                 onLoad={() => {
-                                    window.dispatchEvent(new Event('resize'));
+                                    if (typeof window !== 'undefined') {
+                                        window.dispatchEvent(new Event('resize'));
+                                    }
                                     this.setState({ imgHeight: 'auto' });
                                 }}
                              />

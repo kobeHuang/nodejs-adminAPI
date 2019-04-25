@@ -1,0 +1,18 @@
+.life{
+    background: #fff;
+    height: 100%;
+}
+.life-header{
+    font-size: .28rem;
+    padding: .2rem;
+    text-align: center;
+    color: rgb(110, 125, 143);
+    border-bottom: 1px solid rgb(221, 222, 225);
+}
+.life-header-img{
+    width: .5rem;
+    height: .5rem;    
+}
+.life-content{
+    padding: .6rem .2rem;
+}

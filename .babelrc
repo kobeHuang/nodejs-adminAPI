@@ -3,13 +3,13 @@
     "plugins": [
         "@babel/plugin-transform-runtime",
         "@babel/plugin-proposal-class-properties",
-        "react-hot-loader/babel",
-        [
-            "import",
-            {
-                "libraryName": "antd-mobile",
-                "style": "css"
-            }
-        ]
+        // "react-hot-loader/babel",
+        // [
+        //     "import",
+        //     {
+        //         "libraryName": "antd-mobile",
+        //         "style": "css"
+        //     }
+        // ]
     ]
 }
