@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const db = require('./db');
+import mongoose from 'mongoose';
+import db from './db';
 
 let LifeImageSchema = new mongoose.Schema({
     topic: String,
@@ -11,4 +11,4 @@ let LifeImageSchema = new mongoose.Schema({
 
 const LifeImage = db.model('LifeImage', LifeImageSchema);
 
-module.exports = LifeImage;
+export default LifeImage;

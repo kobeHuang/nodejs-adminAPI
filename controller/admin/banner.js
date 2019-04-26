@@ -1,4 +1,4 @@
-const rename = require('../rename');
+import rename from '../rename';
 
 class Content {
     /*
@@ -109,4 +109,4 @@ class Content {
     }
 }
 
-module.exports = Content;
+export default Content;

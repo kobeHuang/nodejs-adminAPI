@@ -1,4 +1,4 @@
-const rename = require('../rename');
+import rename from '../rename';
 
 class Info {
     /*
@@ -150,4 +150,4 @@ class Info {
     }
 }
 
-module.exports = Info;
+export default Info;

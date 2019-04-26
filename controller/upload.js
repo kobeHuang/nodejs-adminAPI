@@ -6,8 +6,8 @@
  *  @param type
  */
 
-const fs = require('fs');
-const Path = require('path');
+import fs from 'fs';
+import Path from 'path';
 
 function checkFileType(type, extname){
     if(type == 'image'){
@@ -25,7 +25,7 @@ function saveFile(reader, upStream){
     })
 }
 
-module.exports = async(ctx, next) => {
+export default async(ctx, next) => {
     try{
         const files = ctx.request.files.file;
         let isAllow = true,

@@ -1,5 +1,7 @@
-const ObjectId = require('mongodb').ObjectId;
-const menuModel = require('../model/menu');
+import Mongodb from 'mongodb';
+import menuModel from '../model/menu';
+
+const ObjectId = Mongodb.ObjectId;
 
 
 class Menu{
@@ -49,4 +51,4 @@ class Menu{
     }
 }
 
-module.exports = Menu;
+export default Menu;

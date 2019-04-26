@@ -2,9 +2,7 @@
  * admin--User
  * 用户数据库操作助手
  */
-const adminModel = require('../model/admin');
-
-let to = require('./to');
+import adminModel from '../model/admin';
 
 
 class Admin {
@@ -39,4 +37,4 @@ class Admin {
     }
 }
 
-module.exports = Admin;
+export default Admin;

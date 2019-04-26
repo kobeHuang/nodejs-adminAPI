@@ -1,4 +1,4 @@
-const rename = require('../rename');
+import rename from '../rename';
 
 class Menu {
     static async list(ctx, next){
@@ -77,4 +77,4 @@ class Menu {
     }
 }
 
-module.exports = Menu;
+export default Menu;

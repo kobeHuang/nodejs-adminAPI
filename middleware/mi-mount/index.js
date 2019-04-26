@@ -2,12 +2,12 @@
  * 将助手类挂载到 app 
  */
 
-const Path = require('path');
-const fs = require('fs');
+import Path from 'path';
+import fs from 'fs';
 
 const Readdirectory = (path) => {
     let content = {};
-     path = path.replace(/\\/g,'/');
+    //path = path.replace(/\\/g,'/');
     fs.readdirSync(path).forEach(filename => {
         let childPath = Path.join(path, filename);
         const stat = fs.statSync(childPath);
@@ -17,7 +17,6 @@ const Readdirectory = (path) => {
         if(stat.isFile()) {
             let extname = Path.extname(filename);
             if(extname == '.js'){
-                childPath = Path.join(process.cwd(), childPath);
                 content[fname] = require(childPath);
             }
         }else{

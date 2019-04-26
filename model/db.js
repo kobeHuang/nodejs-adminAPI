@@ -3,8 +3,8 @@
  *  连接数据库
  */
 
-const mongoose = require('mongoose');
-const chalk = require('chalk');
+import mongoose from 'mongoose';
+import chalk from 'chalk';
 
 const db = mongoose.createConnection('mongodb://127.0.0.1/campus', {useNewUrlParser:true});
 const success = chalk.bold.green;
@@ -19,5 +19,5 @@ db.on('error', (cb) => {
 });
 
 
-module.exports = db;
+export default db;
 

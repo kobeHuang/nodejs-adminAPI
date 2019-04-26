@@ -3,9 +3,12 @@
  * life数据库操作助手
  */
 
-const ObjectId = require('mongodb').ObjectId ;
-const lifeModel = require('../model/life');
-const lifeImageModel = require('../model/life_image');
+import Mongodb from 'mongodb';
+
+import lifeModel from '../model/life';
+import lifeImageModel from '../model/life_image';
+
+const ObjectId = Mongodb.ObjectId;
 
 class Life{
     static async findLife({ pageNo, pageSize }){
@@ -100,4 +103,4 @@ class Life{
     }
 }
 
-module.exports = Life;
+export default Life;

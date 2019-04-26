@@ -2,8 +2,8 @@
  *  将session保存在mongodb
  */
 
-const koaSession = require('koa-session');
-const db = require('../../model/db');
+import koaSession from 'koa-session';
+import db from '../../model/db';
 import MongooseStore from './store';
 
 const session_config = {

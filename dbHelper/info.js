@@ -3,9 +3,11 @@
  * info数据库操作助手
  */
 
-const ObjectId = require('mongodb').ObjectId;
-const infoModel = require('../model/info');
-const infoClassifyModel = require('../model/info_classify');
+import Mongodb from 'mongodb';
+import infoModel from '../model/info';
+import infoClassifyModel from '../model/info_classify';
+
+const ObjectId = Mongodb.ObjectId;
 
 class Info{
     static async findInfoClassify(){
@@ -98,4 +100,4 @@ class Info{
 
 }
 
-module.exports = Info;
+export default Info;

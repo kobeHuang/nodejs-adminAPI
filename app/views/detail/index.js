@@ -1,28 +1,29 @@
 import React, { Component } from 'react';
+import withStyles from 'isomorphic-style-loader/withStyles';
 
-import './style.css';
+import s from './style.css';
 
 class Detail extends Component {
     render() {
         return(
-            <div className="detail">
-                <div className="detail-header">
-                    <div className="detail-header-title">智慧校园的教室悄悄发生了变化</div>
-                    <div className="detail-header-msg">2019-01-14</div>
+            <div className={s.detail}>
+                <div className={s['detail-header']}>
+                    <div className={s['detail-header-title']}>智慧校园的教室悄悄发生了变化</div>
+                    <div className={s['detail-header-msg']}>2019-01-14</div>
                 </div>
-                <div className="detail-img">
-                    <img className="detail-img-img" src="http://p.qpic.cn/smartcampus/0/25319021414858096/0" />
+                <div className={s['detail-img']}>
+                    <img className={s['detail-img-img']} src="http://p.qpic.cn/smartcampus/0/25319021414858096/0" />
                 </div>
-                <div className="detail-con">
-                    <div className="detail-con-txt">
-                        <p className="detail-con-top">
-                            <span className="detail-con-span detail-con-green"></span>
-                            <span className="detail-con-span detail-con-black"></span>
+                <div className={s['detail-con']}>
+                    <div className={s['detail-con-txt']}>
+                        <p className={s['detail-con-top']}>
+                            <span className={{'detail-con-span': s['detail-con-span'], 'detail-con-green': s['detail-con-green']}}></span>
+                            <span className={{'detail-con-span': s['detail-con-span'], 'detail-con-green': s['detail-con-black']}}></span>
                         </p>
                         <p>快来找找你的教室有什么不同</p>
                     </div>
                 </div>
-                <div className="detail-content">
+                <div className={s['detail-content']}>
                     <p>快来找找你的教室有什么不同</p>
                 </div>
             </div>
@@ -30,4 +31,4 @@ class Detail extends Component {
     }
 }
 
-export default Detail;
+export default withStyles(s)(Detail);

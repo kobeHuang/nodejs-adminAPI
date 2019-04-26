@@ -2,8 +2,8 @@
  * 后台管理员文档结构
  */
 
-const mongoose = require('mongoose');
-const db = require('./db');
+import mongoose from 'mongoose';
+import db from './db';
 
 let AdminSchema = new mongoose.Schema({
     phone: String,
@@ -18,4 +18,4 @@ let AdminSchema = new mongoose.Schema({
 let Admin = db.model('Admin', AdminSchema);
 
 
-module.exports = Admin
+export default Admin

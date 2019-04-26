@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const db = require('./db');
-const counterModel = require('./counter');
+import mongoose from 'mongoose';
+import db from './db';
+import counterModel from './counter';
 
 let MenuSchema = new mongoose.Schema({
     name: String,
@@ -27,4 +27,4 @@ MenuSchema.pre('save', function(next) {
 
 let Menu = db.model('Menu', MenuSchema);
 
-module.exports = Menu;
+export default Menu;

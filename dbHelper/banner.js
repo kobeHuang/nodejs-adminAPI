@@ -3,9 +3,11 @@
  * banner图数据库操作助手
  */
 
-const ObjectId = require('mongodb').ObjectId ;
-const bannerModel = require('../model/banner');
-const bannerPosModel = require('../model/banner_pos');
+import Mongodb from 'mongodb';
+import bannerModel from '../model/banner';
+import bannerPosModel from '../model/banner_pos';
+
+const ObjectId = Mongodb.ObjectId ;
 
 class Banner {
     static async findBannerPos() {
@@ -68,4 +70,4 @@ class Banner {
     }
 }
 
-module.exports = Banner;
+export default Banner;

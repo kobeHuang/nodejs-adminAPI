@@ -1,9 +1,12 @@
-const Path = require('path');
+import Path from 'path';
 //const bodyParser = require('koa-bodyparser');
-const json = require('koa-json');
-const staticFiles = require('koa-static');
-const koaViews = require('koa-views');
-const koaBody = require('koa-body');
+import json from 'koa-json';
+import staticFiles from 'koa-static';
+import koaViews from 'koa-views';
+import koaBody from 'koa-body';
+
+import controller from '../controller';
+import dbHelper from '../dbHelper';
 
 import mount from './mi-mount';
 import api_error from './mi-api-error';
@@ -25,11 +28,10 @@ export default (app) => {
             app.use(middleware);
         })
     }*/
-
     //设置静态路径
-    app.use(staticFiles(Path.resolve(__dirname, '../public')));
+    app.use(staticFiles(Path.resolve(process.cwd(), './public')));
     //将ejs设置为我们的模板引擎
-    app.use(koaViews(Path.resolve(__dirname, '../views'), { map: { html: 'ejs' } }));
+    app.use(koaViews(Path.resolve(process.cwd(), './views'), { map: { html: 'ejs' } }));
 
     session(app);
     app.use(json());
@@ -51,18 +53,21 @@ export default (app) => {
 
     app.use(api_error());
     app.use(validate());
+    
+    app['controller'] = controller;
+    app['dbHelper'] = dbHelper;
 
-    mount({
-        app,
-        mounts: [
-            {
-                path: './controller',
-                name: 'controller'
-            },
-            {
-                path: './controller',
-                name: 'dbHelper'
-            }
-        ]
-    })
+    // mount({
+    //     app,
+    //     mounts: [
+    //         {
+    //             path: './controller',
+    //             name: 'controller'
+    //         },
+    //         {
+    //             path: './controller',
+    //             name: 'dbHelper'
+    //         }
+    //     ]
+    // })
 }

@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const db = require('./db');
+import mongoose from 'mongoose';
+import db from './db';
 
 const ContentSchema = new mongoose.Schema({
     title: String,
@@ -11,4 +11,4 @@ const ContentSchema = new mongoose.Schema({
 
 let Content = db.model('Content', ContentSchema);
 
-module.exports = Content;
+export default Content;

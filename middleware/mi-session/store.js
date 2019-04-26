@@ -2,7 +2,7 @@
  *  将session 记录在数据库 collection
  */
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const schema = {
     _id: String,

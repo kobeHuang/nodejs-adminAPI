@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const db = require('./db');
+import mongoose from 'mongoose';
+import db from'./db';
 
 let ClassifySchema = new mongoose.Schema({
     name: String,
@@ -12,4 +12,4 @@ let ClassifySchema = new mongoose.Schema({
 
 let InfoClassify = db.model('InfoClassify', ClassifySchema);
 
-module.exports = InfoClassify;
+export default InfoClassify;

@@ -1,4 +1,3 @@
-const rename = require('../rename');
 
 class Content {
     static async intro(ctx, next){
@@ -42,4 +41,4 @@ class Content {
 }
 
 
-module.exports = Content;
+export default Content;

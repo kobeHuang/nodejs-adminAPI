@@ -1,6 +1,8 @@
-const mongoose = require('mongoose');
-const ObjectId = require('mongodb').ObjectId ;
-const db = require('./db');
+import mongoose from 'mongoose';
+import db from './db';
+
+const ObjectId = mongoose.ObjectId ;
+
 
 let InfoSchema = new mongoose.Schema({
     title: String,
@@ -35,5 +37,5 @@ InfoSchema.static.findByView = async function(id){
 
 let Info = db.model('Info', InfoSchema);
 
-module.exports = Info;
+export default Info;
 

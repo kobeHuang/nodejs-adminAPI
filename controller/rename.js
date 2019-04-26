@@ -3,10 +3,10 @@
  * @图片由临时文件夹移动到图库
  */
 
-const fs = require('fs');
-const Path = require('path');
+import fs from 'fs';
+import Path from 'path';
 
-module.exports = function(str) {
+export default function(str) {
     const arr = str.split(',');
     arr.forEach(url => {
         if(url.indexOf('tmp/') == -1) return;

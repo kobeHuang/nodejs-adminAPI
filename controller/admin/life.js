@@ -1,4 +1,4 @@
-const rename = require('../rename');
+import rename from '../rename';
 
 class Life {
     static async list(ctx, next){
@@ -158,4 +158,4 @@ class Life {
     }
 }
 
-module.exports = Life;
+export default Life;

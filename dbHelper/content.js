@@ -2,8 +2,10 @@
  * content
  * content数据库操作助手
  */
-const ObjectId = require('mongodb').ObjectId;
-const contentModel = require('../model/content');
+import Mongodb from 'mongodb';
+import contentModel from '../model/content';
+
+const ObjectId = Mongodb.ObjectId ;
 
 class Content{
     static async findIntro(){
@@ -25,4 +27,4 @@ class Content{
     }
 }
 
-module.exports = Content;
+export default Content;

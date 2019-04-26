@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const db = require('./db');
+import mongoose from 'mongoose';
+import db from './db';
 
 let LifeSchema = new mongoose.Schema({
     title: String,
@@ -13,4 +13,4 @@ let LifeSchema = new mongoose.Schema({
 
 const Life = db.model('Life', LifeSchema);
 
-module.exports = Life;
+export default Life;
