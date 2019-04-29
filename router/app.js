@@ -3,6 +3,7 @@ import React from 'react';
 import { StaticRouter } from 'react-router';
 import StyleContext from 'isomorphic-style-loader/StyleContext';
 import ReatDOMServe from 'react-dom/server';
+import { Helmet } from "react-helmet";
 
 import ServeDOM from '../app/server';
 
@@ -20,7 +21,11 @@ Router.get('*', async (ctx, next) => {
             </StyleContext.Provider>
         </StaticRouter>
     )
+    const helmet = Helmet.renderStatic();
+
     await ctx.render('index', {
+        title: helmet.title.toString(),
+        meta: helmet.meta.toString(),
         root: html,
         insertCss: [...css].join('')
     })

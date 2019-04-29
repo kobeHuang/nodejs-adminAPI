@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
+import { Helmet } from "react-helmet";
 import withStyles from '../../components/withStyles';
 
 import s from './style.css';
@@ -12,27 +13,33 @@ class Home extends Component{
 
     render() {
         return(
-            <div className={s['home']}>
-                <Swiper />
-                <div className={s['home-welcome']}>
-                    <div style={{position: 'relative', width: '100%'}}>
-                        <div className={s['home-welcome-line']}></div>
-                        <span className={s['home-welcome-font']}>欢迎来到智慧学校</span>
+            <>
+                <Helmet>
+                    <title>首页 - 我的校园</title>
+                    <meta name="description" content="首页 - 我的校园" />
+                </Helmet>
+                <div className={s['home']}>
+                    <Swiper />
+                    <div className={s['home-welcome']}>
+                        <div style={{position: 'relative', width: '100%'}}>
+                            <div className={s['home-welcome-line']}></div>
+                            <span className={s['home-welcome-font']}>欢迎来到智慧学校</span>
+                        </div>
                     </div>
-                </div>
-                <div className={s['home-cutoff']}></div>
-                <Menu />
-                <div className={s['home-cutoff']}></div>
-                <div className={s['home-news']}>
-                    <p className={s['home-news-title']}>校园新闻</p>
-                    <div>
-                        <NewsItem />
-                        <NewsItem />
+                    <div className={s['home-cutoff']}></div>
+                    <Menu />
+                    <div className={s['home-cutoff']}></div>
+                    <div className={s['home-news']}>
+                        <p className={s['home-news-title']}>校园新闻</p>
+                        <div>
+                            <NewsItem />
+                            <NewsItem />
+                        </div>
+                        <Link to="news" className={s['home-news-more']}>更多新闻 >></Link>
                     </div>
-                    <Link to="news" className={s['home-news-more']}>更多新闻 >></Link>
-                </div>
 
-            </div>
+                </div>
+            </>
         )
     }
 }
