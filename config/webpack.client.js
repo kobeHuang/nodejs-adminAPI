@@ -11,9 +11,6 @@ module.exports = Merge(baseConfig, {
     mode: 'development',
     entry: [
         //只替换了修改的代码，做到了页面的局部刷新
-        //https://blog.csdn.net/huangpb123/article/details/78556652
-        //'react-hot-loader/patch',
-        //'webpack-hot-middleware/client?reload=true',
         Path.resolve(__dirname, '../app/index.js')
     ],
     output: {
@@ -24,8 +21,14 @@ module.exports = Merge(baseConfig, {
     module: {
         rules: [
             {
+                test: /\.jsx?$/,
+                exclude:/node_modules/,
+                // include: [Path.resolve(__dirname, '../app')],
+                loader: require.resolve('babel-loader')
+            },
+            {
                 test: /\.css$/,
-                use: ["style-loader",{
+                use: ['style-loader',{
                     loader: 'css-loader',
                     options: {
                         modules: true,

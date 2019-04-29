@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import withStyles from 'isomorphic-style-loader/withStyles';
+import withStyles from '../../components/withStyles';
 
 import s from './style.css';
 
@@ -19,4 +19,4 @@ class MyCampus extends Component {
     }
 }
 
-export default withStyles(s)(MyCampus);
+export default withStyles(MyCampus, s);

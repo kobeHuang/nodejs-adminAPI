@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import withStyles from 'isomorphic-style-loader/withStyles';
+import withStyles from '../../components/withStyles';
 
 import s from './style.css';
 import ImageItem from '../../components/mImageItem';
@@ -15,7 +15,7 @@ class Life extends Component{
                     <img className={s['life-header-img']} src="http://p.qpic.cn/smartcampus/0/441281377990953/0" />
                     <p>我的智慧校园</p>
                 </div>
-                <div className={s[life-list]}>
+                <div className={s['life-list']}>
                     {
                         this.state.list.map(val => (
                             <ImageItem key={val} />
@@ -27,4 +27,4 @@ class Life extends Component{
     }
 }
 
-export default withStyles(s)(Life);
+export default withStyles(Life, s);

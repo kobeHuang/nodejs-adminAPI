@@ -1,0 +1,22 @@
+.imageItem-title {
+    padding: .24rem;
+    font-size: .32rem;
+}
+.imageItem-title-icon {
+    display: inline-block;
+    height: 100%;
+    width: .3rem;
+    background: rgb(12, 177, 129);
+}
+.imageItem-title-txt {
+    display: inline-block;
+    line-height: .34rem;
+    padding-left: 11px;
+    border-left: 7px solid rgb(12, 177, 129)
+}
+.imageItem-image {
+    margin: .4rem 0;
+}
+.imageItem-image-img {
+    width: 100%;
+}

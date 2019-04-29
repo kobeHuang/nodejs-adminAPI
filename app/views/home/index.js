@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
-import withStyles from 'isomorphic-style-loader/withStyles';
+import withStyles from '../../components/withStyles';
 
 import s from './style.css';
 import Swiper from './swiper';
@@ -36,4 +36,4 @@ class Home extends Component{
         )
     }
 }
-export default withStyles(s)(Home);
+export default withStyles(Home, s);

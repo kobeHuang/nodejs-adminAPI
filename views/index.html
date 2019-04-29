@@ -11,7 +11,6 @@
             `<script src="/client/static/es6-promise.min.js"><\/script><script>ES6Promise.polyfill()<\/script>`), /android/i.test(
             navigator.userAgent) || document.write(`<script src="/client/static/fastclick.min.js"><\/script>`);
         </script>
-        <script src="/client/app.bundle.js"></script>
         <script>
             (function(w){
                 var rem;
@@ -64,9 +63,31 @@
                 }
             })(window)
         </script>
-        <style> <%- insertCss %> </style>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            html,body{
+                height: 100%;
+            }
+            body{
+                width: 100%;
+                font-size: .14rem;
+                font-family: -apple-system-font,Helvetica Neue,sans-serif;
+                overflow-x: hidden;
+                color: #686868;
+                line-height: 1.6;
+            }
+            #app,.root{
+                height: 100%;
+            }
+            <%- insertCss %> 
+        </style>
     </head>
     <body>
         <div id="app"><%- root %></div>
+        <script src="/client/app.bundle.js"></script>
     </body>
 </html>

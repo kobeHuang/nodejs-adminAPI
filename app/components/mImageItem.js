@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 
 import { Carousel, WingBlank } from 'antd-mobile';
+import withStyles from './withStyles';
+
+import styles from './mImageItem.css';
 
 class MImageItem extends Component{
     state = {
@@ -19,13 +22,13 @@ class MImageItem extends Component{
     render() {
         return(
             <div className="mImageItem">
-                <div style={styles["mImageItem-title"]}>
-                    <div style={styles["mImageItem-title-con"]}>
-                        <div style={styles["mImageItem-titel-line"]}></div>
-                        <span style={styles["mImageItem-title-txt"]}>新生晚会表演</span>
+                <div className={styles["mImageItem-title"]}>
+                    <div className={styles["mImageItem-title-con"]}>
+                        <div className={styles["mImageItem-titel-line"]}></div>
+                        <span className={styles["mImageItem-title-txt"]}>新生晚会表演</span>
                     </div>
                 </div>
-                <div style={styles["mImageItem-image"]}>
+                <div className={styles["mImageItem-image"]}>
                     <WingBlank>
                         <Carousel
                         autoplay={true}
@@ -60,35 +63,4 @@ class MImageItem extends Component{
     }
 }
 
-const styles = {
-    'mImageItem-title': {
-        padding: '.24rem'
-    },
-    'mImageItem-title-con': {
-        position: 'relative'
-    },
-    'mImageItem-titel-line': {
-        position: 'absolute',
-        left: 0,
-        bottom: '.24rem',
-        width: '100%',
-        height: '1px',
-        transform: 'scaleY(.5)',
-        transformOrigin: '0 0',
-        borderTop: '2px solid #0cb181'
-    },
-    'mImageItem-title-txt': {
-        display: 'inline-block',
-        position: 'relative',
-        fontSize: '.32rem',
-        padding: '0 .2rem',
-        background: '#fff',
-    },
-    'mImageItem-image': {
-        height: '4rem',
-        margin: '.3rem .1rem',
-        overflow: 'hidden'
-    }
-}
-
-export default MImageItem;
+export default withStyles(MImageItem, styles);

@@ -10,9 +10,9 @@ const Router = new KoaRouter();
 
 Router.get('*', async (ctx, next) => {
     const url = ctx.request.url.replace('/app', '');
-    const css = new Set() // CSS for all rendered React components
-    const insertCss = (...styles) => styles.forEach(style => css.add(style._getCss()))
+    const css = new Set();
     const context =  {css: []};
+    const insertCss = (...styles) => styles.forEach(style => css.add(style._getCss()))
     const html = ReatDOMServe.renderToString(
         <StaticRouter basename="/app" context={context} location={url}>
             <StyleContext.Provider value={{ insertCss }}>

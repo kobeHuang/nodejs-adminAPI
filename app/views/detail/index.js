@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import withStyles from 'isomorphic-style-loader/withStyles';
+import withStyles from '../../components/withStyles';
 
 import s from './style.css';
 
@@ -31,4 +31,4 @@ class Detail extends Component {
     }
 }
 
-export default withStyles(s)(Detail);
+export default withStyles(Detail, s);

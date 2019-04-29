@@ -10,19 +10,12 @@ class News extends Component {
     
     render() {
         return(
-            <div className="newsList">
+            <div className="newsList" style={{height: '100%', background: '#fff'}}>
                 {
                     this.state.data.map(val => (
                         <NewsItem key={val} />
                     ))
                 }
-                <style jsx="true">{`
-                    .newsList {
-                        height: 100%;
-                        background: #fff;
-                    }
-                `}
-                </style>
             </div>
         )
     }

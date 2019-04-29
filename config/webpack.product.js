@@ -23,6 +23,17 @@ module.exports = Merge(baseConfig, {
     module: {
         rules: [
             {
+                test: /\.jsx?$/,
+                exclude:/node_modules/,
+                // include: [Path.resolve(__dirname, '../app')],
+                loader: require.resolve('babel-loader'),
+                options: {
+                    babelrc: false,
+                    presets: ['@babel/preset-react','@babel/preset-env'],
+                    plugins: ['@babel/plugin-transform-runtime','@babel/plugin-proposal-class-properties']
+                },
+            },
+            {
                 test: /\.css$/,
                 use: ['isomorphic-style-loader',{
                         loader: 'css-loader',
