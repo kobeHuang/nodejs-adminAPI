@@ -29,9 +29,9 @@ export default (app) => {
         })
     }*/
     //设置静态路径
-    app.use(staticFiles(Path.resolve(process.cwd(), './public')));
+    app.use(staticFiles(Path.resolve(process.cwd(), '../public')));
     //将ejs设置为我们的模板引擎
-    app.use(koaViews(Path.resolve(process.cwd(), './views'), { map: { html: 'ejs' } }));
+    //app.use(koaViews(Path.resolve(process.cwd(), '../views'), { map: { html: 'ejs' } }));
 
     session(app);
     app.use(json());
@@ -39,12 +39,12 @@ export default (app) => {
     app.use(koaBody({
         multipart: true,
         formidable: {
-            uploadDir:Path.join(__dirname,'../public/tmp/'),
+            uploadDir:Path.join(__dirname,'../../public/tmp/'),
             keepExtensions: true,
             maxFileSize: 2*1024*1024,    // 设置上传文件大小最大限制，默认2M
             onFileBegin:(name,file) => {
                 const extname = Path.extname(file.name);
-                const dir = Path.join(__dirname,'../public/tmp/');
+                const dir = Path.join(__dirname,'../../public/tmp/');
                 // 重新覆盖 file.path 属性
                 file.path = `${dir}/${new Date().getTime()}${extname}`;
             }

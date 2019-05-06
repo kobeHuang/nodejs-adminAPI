@@ -4,8 +4,8 @@
   "description": "koa2+react16+webpack+mongodb",
   "scripts": {
     "static": "webpack-dev-server --inline --progress --config config/webpack.static.js",
-    "dev": "cross-env NODE_ENV=development nodemon index.js",
-    "build-dev": "cross-env NODE_ENV=production nodemon index.js",
+    "dev": "cross-env NODE_ENV=development nodemon api/index.js",
+    "build-dev": "cross-env NODE_ENV=production nodemon api/index.js",
     "build-client": "webpack --config config/webpack.client.js",
     "build": "webpack --config config/webpack.product.js",
     "test": "echo \"Error: no test specified\" && exit 1"

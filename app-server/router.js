@@ -5,7 +5,7 @@ import StyleContext from 'isomorphic-style-loader/StyleContext';
 import ReatDOMServe from 'react-dom/server';
 import { Helmet } from "react-helmet";
 
-import ServeDOM from '../app/server';
+import ServeDOM from '../app/app';
 
 const Router = new KoaRouter();
 

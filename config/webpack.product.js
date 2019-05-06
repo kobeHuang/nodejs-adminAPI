@@ -13,7 +13,7 @@ module.exports = Merge(baseConfig, {
     mode: "development",
     // devtool:'null',//注意，这能大大压缩我们的打包代码
     entry: {
-        app: Path.resolve(__dirname, '../server.js')
+        app: Path.resolve(__dirname, '../app-server/server.js')
     },
     output: {
         filename: 'bundle.js',
