@@ -7,6 +7,8 @@ import life from './admin/life';
 import menu from './admin/menu';
 import user from './admin/user';
 
+import home from './app/home';
+
 export default {
     rename,
     upload,
@@ -17,5 +19,8 @@ export default {
         life,
         menu,
         user
+    },
+    'app': {
+        home,
     }
 }

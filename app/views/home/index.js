@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 import { Helmet } from "react-helmet";
+import { connect } from 'react-redux';
 import withStyles from '../../components/withStyles';
 
 import s from './style.css';
 import Swiper from './swiper';
 import Menu from './menu';
 import NewsItem from '../../components/newsItem';
+import { actions } from '../../store/home';
 
 class Home extends Component{
 
@@ -42,5 +44,29 @@ class Home extends Component{
             </>
         )
     }
+
+    componentDidMount() {
+        const { data,  getHomeData} = this.props;
+        if(!Object.keys(data).length){
+            getHomeData();
+        }
+    }
 }
-export default withStyles(Home, s);
+
+const mapStateToProps = state => ({
+    data: state.home.data
+})
+
+const mapDispatchToProps = dispatch => ({
+    getHomeData() {
+        dispatch(actions.getHomeData())
+    }
+})
+
+const ExportHome = connect(mapStateToProps, mapDispatchToProps)(withStyles(Home, s));
+
+ExportHome.loadData = (store) => {
+    return store.dispatch(actions.getHomeData())
+}
+
+export default ExportHome;
