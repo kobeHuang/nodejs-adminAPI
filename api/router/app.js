@@ -11,5 +11,8 @@ export default (app) => {
     //首页
     router.get('/getHomeData', app.controller.app.home.all);
 
+    //资讯详情
+    router.get('/getInfoDetail', app.controller.app.detail.info);
+
     return router;
 }

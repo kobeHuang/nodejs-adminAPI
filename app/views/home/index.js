@@ -14,6 +14,11 @@ import { actions } from '../../store/home';
 class Home extends Component{
 
     render() {
+        const {
+            banners = [],
+            menus = [],
+            news = []
+        } = this.props.data;
         return(
             <>
                 <Helmet>
@@ -21,7 +26,7 @@ class Home extends Component{
                     <meta name="description" content="首页 - 我的校园" />
                 </Helmet>
                 <div className={s['home']}>
-                    <Swiper />
+                    <Swiper banners={banners} />
                     <div className={s['home-welcome']}>
                         <div style={{position: 'relative', width: '100%'}}>
                             <div className={s['home-welcome-line']}></div>
@@ -29,13 +34,16 @@ class Home extends Component{
                         </div>
                     </div>
                     <div className={s['home-cutoff']}></div>
-                    <Menu />
+                    <Menu data={menus} />
                     <div className={s['home-cutoff']}></div>
                     <div className={s['home-news']}>
                         <p className={s['home-news-title']}>校园新闻</p>
                         <div>
-                            <NewsItem />
-                            <NewsItem />
+                            {
+                                news.map(item => (
+                                    <NewsItem  data={item} key={item._id} />
+                                ))
+                            }
                         </div>
                         <Link to="news" className={s['home-news-more']}>更多新闻 >></Link>
                     </div>

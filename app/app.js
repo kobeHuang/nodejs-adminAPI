@@ -3,7 +3,7 @@ import { renderRoutes } from 'react-router-config';
 
 const App = (props) => {
     return(
-        <div style={{height: '100%'}}>
+        <div style={{height: '100%', width: '100%'}}>
             {renderRoutes(props.route.routes)}
         </div>
     )

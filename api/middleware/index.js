@@ -29,7 +29,7 @@ export default (app) => {
         })
     }*/
     //设置静态路径
-    app.use(staticFiles(Path.resolve(process.cwd(), '../public')));
+    app.use(staticFiles(Path.resolve(process.cwd(), './public')));
     //将ejs设置为我们的模板引擎
     //app.use(koaViews(Path.resolve(process.cwd(), '../views'), { map: { html: 'ejs' } }));
 

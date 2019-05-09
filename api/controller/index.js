@@ -8,6 +8,7 @@ import menu from './admin/menu';
 import user from './admin/user';
 
 import home from './app/home';
+import detail from './app/detail';
 
 export default {
     rename,
@@ -22,5 +23,6 @@ export default {
     },
     'app': {
         home,
+        detail
     }
 }

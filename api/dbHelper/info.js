@@ -97,6 +97,11 @@ class Info{
         return result;
     }
 
+    static async findDetail( _id ){
+        const result = await infoModel.find({ _id: ObjectId(_id) });
+        return result;
+    }
+
 
 }
 

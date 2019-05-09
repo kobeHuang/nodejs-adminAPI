@@ -7,45 +7,30 @@ import s from './style.css';
 
 
 class Menu extends Component {
+
+    state = {
+        link: {
+            'type-1': '/my-campus',
+            'type-2': '/news',
+            'type-3': '/prize',
+            'type-4': '/works',
+            'type-5': '/life'
+        }
+    }
+
     render() {
         return(
             <div className={s['home-menu']}>
-                <div className={s['home-menu-item']}>
-                    <div className={s['home-menu-icon']}>
-                        <img src="http://p.qpic.cn/smartcampus/0/25319021966887216/0" />
-                    </div>
-                    <Link to="/my-campus" className={s['home-menu-name']}>学校简介</Link>
-                </div>
-                <div className={s['home-menu-item']}>
-                    <div className={s['home-menu-icon']}>
-                        <img src="http://p.qpic.cn/smartcampus/0/25319021795367092/0" />
-                    </div>
-                    <Link to="/news" className={s['home-menu-name']}>校园新闻</Link>
-                </div>
-                <div className={s['home-menu-item']}>
-                    <div className={s['home-menu-hg']}>
-                        <img src="http://p.qpic.cn/smartcampus/0/25319023539621628/0" />
-                    </div>
-                    <Link to="/prize" className={s['home-menu-name']}>荣获奖项</Link>
-                </div>
-                <div className={s['home-menu-item']}>
-                    <div className={s['home-menu-icon']}>
-                        <img src="http://p.qpic.cn/smartcampus/0/25319022825701726/0" />
-                    </div>
-                    <span className={s['home-menu-name']}>师生作品</span>
-                </div>
-                <div className={s['home-menu-item']}>
-                    <div className={s['home-menu-icon']}>
-                        <img src="http://p.qpic.cn/smartcampus/0/25319021886291474/0" />
-                    </div>
-                    <Link to="/life" className={s['home-menu-name']}>校园生活</Link>
-                </div>
-                <div className={s['home-menu-item']}>
-                    <div className={s['home-menu-hg']}>
-                        <img src="http://p.qpic.cn/smartcampus/0/25319021366965580/0" />
-                    </div>
-                    <span className={s['home-menu-name']}>校园街景</span>
-                </div>
+                {
+                    this.props.data.map( (item, idx) => (
+                        <div key={item._id} className={s['home-menu-item']}>
+                            <div className={(idx+1) % 3==0 ? s['home-menu-hg'] : s['home-menu-icon']}>
+                                <img src={item.icon} />
+                            </div>
+                            <Link to={this.state.link[`type-${item.type}`]} className={s['home-menu-name']}>{item.name}</Link>
+                        </div>
+                    ))
+                }
             </div>
         )
     }

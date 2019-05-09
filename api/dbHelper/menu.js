@@ -10,7 +10,7 @@ class Menu{
             total = 0;
         const start = (pageNo - 1) * pageSize;
         total = await menuModel.find().count();
-        result = await menuModel.find().limit(pageSize).skip(start).sort({order: -1}) || [];
+        result = await menuModel.find().limit(pageSize).skip(start).sort({order: 1}) || [];
         
         return {
             total,

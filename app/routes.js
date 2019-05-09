@@ -4,6 +4,7 @@ import News from './views/news';
 import Prizes from './views/prize';
 import MyCampus from './views/my-campus';
 import Life from './views/life';
+import Works from './views/works';
 import Detail from './views/detail';
 import NoMatch from './views/noMatch';
 
@@ -43,9 +44,16 @@ export default [{
             key: 'life'
         },
         { 
+            path: '/works',
+            component: Works,
+            exact: true,
+            key: 'works'
+        },
+        { 
             path: '/article/:type/:id',
             component: Detail,
             exact: true,
+            loadData: Detail.loadData,
             key: 'article'
         },
         { 

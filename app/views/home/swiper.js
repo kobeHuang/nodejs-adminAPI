@@ -8,13 +8,13 @@ import { Carousel, WingBlank } from 'antd-mobile';
 
 class Swiper extends Component {
     state = {
-        imgs: ['1', '2', '3'],
+        imgs: [],
         imgHeight: 150
     }
 
     componentDidMount() {
         this.setState({
-            imgs: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI']
+            imgs: this.props.banners
         })
     }
 
@@ -43,7 +43,7 @@ class Swiper extends Component {
                                 }}
                             >
                             <img
-                                src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
+                                src={val.url}
                                 style={{ width: '100%', verticalAlign: 'top' }}
                                 onLoad={() => {
                                     if (typeof window !== 'undefined') {
