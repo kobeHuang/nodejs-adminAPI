@@ -43,6 +43,13 @@ class Detail extends Component {
             </>
         )
     }
+    componentDidMount() {
+        const { detail, getDetail } = this.props;
+        if(!Object.keys(detail).length){
+            const { type, id } = this.props.match.params;
+            getDetail({ classify: type, _id: id });
+        }
+    }
 }
 
 const mapStateToProps = state => ({

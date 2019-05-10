@@ -18,6 +18,12 @@ class Swiper extends Component {
         })
     }
 
+    componentWillReceiveProps(nextProps){
+        this.setState({
+            imgs: nextProps.banners
+        })
+    }
+
     render() {
         return(
             <WingBlank>
