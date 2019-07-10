@@ -17,7 +17,7 @@ const Readdirectory = (path) => {
         if(stat.isFile()) {
             let extname = Path.extname(filename);
             if(extname == '.js'){
-                content[fname] = require(childPath);
+                content[fname] = require(childPath).default;
             }
         }else{
             content[fname] = Readdirectory(childPath);

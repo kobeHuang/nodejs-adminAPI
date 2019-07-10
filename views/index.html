@@ -18,10 +18,7 @@
         <script>
             (function(w){
                 var rem;
-                // 添加FastClick
-                if (!(/android/i.test(navigator.userAgent))) {
-                    FastClick.attach(document.body);
-                }
+
                 setREM();
 
                 // 修复低版本安卓机rem计算不准确
@@ -93,5 +90,13 @@
     <body>
         <div id="app"><%- root %></div>
         <script src="/client/app.bundle.js"></script>
+        <script>
+            (function(w){
+                // 添加FastClick
+                if (!(/android/i.test(navigator.userAgent))) {
+                    FastClick.attach(document.body);
+                }
+            })(window)
+        </script>
     </body>
 </html>

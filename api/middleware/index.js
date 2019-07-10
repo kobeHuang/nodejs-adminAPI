@@ -5,8 +5,8 @@ import staticFiles from 'koa-static';
 import koaViews from 'koa-views';
 import koaBody from 'koa-body';
 
-import controller from '../controller';
-import dbHelper from '../dbHelper';
+// import controller from '../controller';
+// import dbHelper from '../dbHelper';
 
 import mount from './mi-mount';
 import api_error from './mi-api-error';
@@ -54,20 +54,20 @@ export default (app) => {
     app.use(api_error());
     app.use(validate());
     
-    app['controller'] = controller;
-    app['dbHelper'] = dbHelper;
+    // app['controller'] = controller;
+    // app['dbHelper'] = dbHelper;
 
-    // mount({
-    //     app,
-    //     mounts: [
-    //         {
-    //             path: './controller',
-    //             name: 'controller'
-    //         },
-    //         {
-    //             path: './controller',
-    //             name: 'dbHelper'
-    //         }
-    //     ]
-    // })
+    mount({
+        app,
+        mounts: [
+            {
+                path: Path.join(__dirname, '../controller'),
+                name: 'controller'
+            },
+            {
+                path: Path.join(__dirname, '../dbHelper'),
+                name: 'dbHelper'
+            }
+        ]
+    })
 }

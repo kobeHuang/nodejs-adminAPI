@@ -5,10 +5,13 @@ import serverAxios from '../../app-server/request';
 import clientAxios from '../request';
 import { reducer as homeReducer } from './home';
 import { reducer as detailReducer } from './detail';
+import { reducer as newsReducer } from './news';
+import { from } from 'array-flatten';
 
 const reducers = combineReducers({
     home: homeReducer,
-    detail: detailReducer
+    detail: detailReducer,
+    news: newsReducer
 });
 
 export const getStore = (req) => {

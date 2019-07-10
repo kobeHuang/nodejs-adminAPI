@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import { Helmet } from "react-helmet";
 import NewsItem from '../../components/newsItem';
+import { actions } from '../../store/news';
 
 class News extends Component {
 
-    state ={
-        data: ['1','2','3','4']
+    componentDidMount() {
+        const { list,  getNewsList} = this.props;
+        if(!list.length){
+            getNewsList();
+        }
     }
     
     render() {
@@ -18,8 +23,8 @@ class News extends Component {
                 </Helmet>
                 <div className="newsList" style={{height: '100%', background: '#fff'}}>
                     {
-                        this.state.data.map(val => (
-                            <NewsItem key={val} />
+                        this.props.list.map(item => (
+                            <NewsItem data={item} key={item._id}  />
                         ))
                     }
                 </div>
@@ -28,4 +33,20 @@ class News extends Component {
     }
 }
 
-export default News;
+const mapStateToProps = state => ({
+    list : state.news.data
+});
+
+const mapDispatchToProps = dispatch => ({
+    getNewsList() {
+        dispatch(actions.getNewsList()) 
+    }
+});
+
+const ExportNews = connect(mapStateToProps, mapDispatchToProps)(News);
+
+ExportNews.loadData = (store) => {
+    return store.dispatch(actions.getNewsList())
+}
+
+export default ExportNews;
